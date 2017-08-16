@@ -4,11 +4,11 @@ var Schema = mongoose.Schema;
 // Use native promises
 mongoose.Promise = global.Promise;
 
-const postSchema = {
+const postSchema = new Schema({
     content: String,
     created_at: Date,
     updated_at: Date
-}
+});
 
 const projectSchema = new Schema({
     name: String,
@@ -23,9 +23,10 @@ const userSchema = new Schema({
     firstName: String,
     lastName: String,
     userName: String,
+    password: String,
     company: String,
-    posts: [postSchema],
     projects: [projectSchema],
+    posts: [postSchema],
     created_at: Date,
     updated_at: Date
 });
