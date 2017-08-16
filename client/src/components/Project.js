@@ -38,6 +38,15 @@ class Project extends Component {
         this.setState({changeListActive});
     }
 
+    // _determineCutPlan = () => {
+    //     const sum = 0;
+    //     for(var i = 0; i < this.props.pieceLengths.length; i++){
+    //         sum += this.props.pieceLengths[i];
+    //     }
+
+    //     const goalTotalNeeded = need to determine stock material length
+    // } 
+
     render() {
         
         const projectName = this.props.projectName;
