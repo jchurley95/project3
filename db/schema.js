@@ -15,6 +15,7 @@ const projectSchema = new Schema({
     name: String,
     imageURL: String,
     projectCost: Number,
+    pieceLengths: [],
     totalStockBoardNeededThisProject: Number,
     created_at: Date,
     updated_at: Date

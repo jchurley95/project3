@@ -55,12 +55,6 @@ const JHurleyUser = new User ({
 });
 // END User: JCHurley95
 
-post1.save().then(() => console.log("post1 Saved!"));
-post2.save().then(() => console.log("post2 Saved!"));
-indoorTableProject.save().then(() => console.log("outdoorChairProject Saved!"));
-outdoorTableProject.save().then(() => console.log("outdoorTableProject Saved!"));
-JHurleyUser.save().then(() => console.log("JHurleyUser Saved!"));
-
 // USER: RonSwanson
 
     // START RonSwanson Post 1
@@ -88,6 +82,12 @@ const RonSwansonUser = new User ({
     posts: [post3]
 });
 // END User: RonSwanson
+
+post1.save().then(() => console.log("post1 Saved!"));
+post2.save().then(() => console.log("post2 Saved!"));
+indoorTableProject.save().then(() => console.log("outdoorChairProject Saved!"));
+outdoorTableProject.save().then(() => console.log("outdoorTableProject Saved!"));
+JHurleyUser.save().then(() => console.log("JHurleyUser Saved!"));
 
 post3.save().then(() => console.log("post3 Saved!"));
 chairProject.save().then(() => console.log("chairProject Saved!"));

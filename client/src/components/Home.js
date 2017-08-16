@@ -3,17 +3,17 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Post from './Post';
 import Project from './Project';
-import User from './User';
 
 class Home extends Component {
     constructor(){
         super();
         this.state = {
-            currentUserId: "5993de04a528cf0a20607b3c",
             redirect: false,
+            adminView: false,
             allUsers: [],
             allProjects: [],
             allPosts: []
+
         }
     }
 
@@ -55,23 +55,37 @@ class Home extends Component {
       <div>
         <div>
             <h1>Posts</h1>
-            {this.state.allPosts.map((post) => {
-                return <Post />
+            {this.state.allPosts.map((post, i) => {
+                return <Post 
+                key={i} 
+                post={post} 
+                title={this.state.allPosts[i].title}
+                content={this.state.allPosts[i].content}
+                />
             })}
         </div>
         <div>
             <h1>Projects</h1>
+            {this.state.allProjects.map((project, i) => {
+                return <Project 
+                key={i} 
+                project={project}
+                projectName={this.state.allProjects[i].name}
+                pieceLengths={this.state.allProjects[i].pieceLengths}
+                adminView={this.state.adminView}/>
+                
+            })}
         </div>
         <div>
             <h1>Users</h1>
+            {this.state.allUsers.map((user, i) => (
+                <div key={i}>
+                    <Link to={`/user/${user._id}`}>
+                    {user.userName}
+                    </Link>
+                </div>
+            ))}
         </div>
-        {this.state.allUsers.map((user, i) => (
-          <div key={i}>
-            <Link to={`/user/${user._id}`}>
-              {user.userName}
-            </Link>
-          </div>
-        ))}
       </div>
     );
   }
