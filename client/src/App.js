@@ -26,6 +26,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          
           <div className="App-Navbar">
               <Link to='/home'> 
                 <img style={iconStyle} src={HomeIcon} />HOME 
@@ -38,7 +39,7 @@ class App extends Component {
           <div>
             <Route exact path="/" component={Entrance} />
             <Route exact path="/home" component={Home} />
-            <Route exact path="/user/:userId" component={MyProjects} />
+            <Route exact path="/user/:userId" component={MyProjects}/>
             <Route exact path="/project/:projectId" component={Project} />
             <Route path="user/:userId/add-project" component={AddProject} />
           </div>

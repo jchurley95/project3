@@ -12,13 +12,13 @@ class Home extends Component {
             adminView: false,
             allUsers: [],
             allProjects: [],
-            allPosts: []
-
+            allPosts: [],
+            currentUserId: ''
         }
     }
 
     componentWillMount(){
-
+        console.log("currentUserId in HomePage is: ", this.props.currentUserId);
         axios.get(`/api/user/`)
         .then(res => {
             const allUsers = res.data;
@@ -76,12 +76,13 @@ class Home extends Component {
             <div className="HomeUsersListContainer">
                 <h1>Users</h1>
                 {this.state.allUsers.map((user, i) => (
-                    <div adminView={this.state.adminView} 
-                    key={i} 
-                    className="UserListItem">
-                        <Link to={`/user/${user._id}`}>
-                            {user.userName}
-                        </Link>
+                    <div 
+                        adminView={this.state.adminView} 
+                        key={i} 
+                        className="UserListItem">
+                            <Link to={`/user/${user._id}`}>
+                                {user.userName}
+                            </Link>
                     </div>
                 ))}
             </div>

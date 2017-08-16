@@ -58,6 +58,7 @@ class Project extends Component {
         return(
             <div className="ProjectContainer">
                 <h2>Project Name: {projectName}</h2>
+                <hr />
                 <div>
                     {
                         this.state.changeNameActive ? 
@@ -104,6 +105,7 @@ class Project extends Component {
                                     : 'Edit Piece Lengths List'}
                                 </button> 
                                 <br />
+                                <hr />
                                 <button onClick={this.props.deleteProject}>Delete Project</button>
                             </div>
                             :

@@ -1,35 +1,39 @@
 import React, { Component } from 'react';
 
 class AddProject extends Component {
-  constructor(){
+
+  constructor () {
     super();
+
     this.state = {
-      id: "",
-      projectName: '',
-      pieceLengths: []
+        newProject: {}
     }
   }
 
-//   componentWillMount(){
-//     const id = this.props.match.params.userId;
-//     axios.get(`/api/user/${id}`).then(res => {
-//       this.setState({
-//         id: res.data._id,
-//         name: res.data.name,
-//         projects: res.data.projects
-//       });
-//     });
-//   }
+  _handleNewProjectChange = (event) => {
+      const projectName = event.target.name;
+      const name = event.target.value;
+      const newProject = {...this.state.newProject};
+      newProject[projectName] = name;
+      this.setState({newProject})
+  };
+  _addNewProject = (event) => {
+      event.preventDefault();
+      this.props.addNewProjectToProductList(this.state.newProject);
+  };
 
-  render() {
-    return (
-      <div>
-        <h1>Project Name: {this.state.projectName}</h1>
-        
+    render() {
+        return (
+            <div>
+                <form onSubmit={this._addNewProject}>
+                    <div><input name="productName" type="text" placeholder="Project Name" onChange={this._handleNewProductChange}/></div>
+                    <div><input name="description" type="text" placeholder="Description" onChange={this._handleNewProductChange}/></div>
+                    <div><input type="submit" value="Create New Product"/></div>
+                </form>
+            </div>
+        );
 
-      </div>
-    );
-  }
+    }
 }
 
 export default AddProject;
