@@ -4,6 +4,11 @@ import Home from "./components/Home";
 import Project from './components/Project';
 import AddProject from './components/AddProject';
 import MyProjects from './components/MyProjects';
+import Entrance from './components/Entrance';
+import HomeIcon from './images/home-icon.ico';
+import BuildIcon from './images/tools-icon.png';
+
+
 
 class App extends Component {
   constructor() {
@@ -14,19 +19,28 @@ class App extends Component {
     }
   }
   render() {
+    const iconStyle = {
+      height: '50px',
+      width: '50px'
+    }
     return (
       <Router>
-        <div>
+        <div className="App">
+          <div className="App-Navbar">
+              <Link to='/'> 
+                <img style={iconStyle} src={HomeIcon} />HOME 
+              </Link>   
+              <h1>ScrapSave</h1> 
+              <Link to={`/user/${this.state.currentUserId}`}>
+                <img style={iconStyle} src={BuildIcon} />MY DIY
+              </Link>
+            </div>
           <div>
-            <Link to="/">Home</Link>
-            ScrapSave
-            <Link to={`/user/${this.state.currentUserId}`}>My DIY</Link>
-          </div>
-          <div>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Entrance} />
+            <Route exact path="/home" component={Home} />
             <Route exact path="/user/:userId" component={MyProjects} />
             <Route exact path="/project/:projectId" component={Project} />
-            <Route exact path="/add-project" component={AddProject} />
+            <Route path="user/:userId/add-project" component={AddProject} />
           </div>
         </div>
       </Router>

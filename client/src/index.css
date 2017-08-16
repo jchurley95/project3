@@ -1,5 +1,88 @@
 body {
-  margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-image: url('./images/wood_lights.jpg');
+  background-repeat: no-repeat;
+  background-size: stretch;
+  background-attachment: fixed;
+  background-position: center;
+  text-align: center;
+}
+
+.App-Navbar {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-image: url('./images/navbar_back.jpg');
+  background-size: stretch;
+  color: black;
+  box-shadow: 0 0 20px 10px black;
+}
+
+.App-Navbar a {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  box-shadow: none;
+  background-color: rgba(0,0,0,0);
+}
+
+.App-Navbar h1 {
+  font-size: 50px;
+}
+
+a {
+  /* box-shadow: 0 0 20px 7px black inset; */
+  color: white;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.1);
+  text-decoration: none;
+  margin: 10px; 
+}
+
+.User-Index-Link a {
+  box-shadow: none;
+  border: none;
+}
+
+.ProjectContainer {
+  background-image: url('./images/project_wood.jpg');
+  color: white;
+  border-radius: 25px;
+  opacity: 1;
+  height: 200px;
+  width: 400px;
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+}
+
+.PostContainer {
+  background-image: url('./images/project_wood.jpg');
+  color: white;
+  border-radius: 25px;
+  opacity: 1;
+  height: 200px;
+  width: 400px;
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+}
+
+.UserListItem {
+  margin: 30px;
+}
+
+.HomePageContainer{
+  display: flex;
+}
+
+.HomeUsersListContainer {
+  border: 2px solid black;
+  height: 100%;
+  margin: 20px;
 }
