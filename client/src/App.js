@@ -15,7 +15,7 @@ class App extends Component {
     super();
 
     this.state = {
-      currentUserId: '5993ef4862b9d91bacc09527'
+      currentUserId: '599463ce8f4a85485dc9c28d'
     }
   }
   render() {

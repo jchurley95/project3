@@ -38,7 +38,7 @@ mongoose.Promise = global.Promise;
     // START JCHurley95 Project 2
         // PROJECT 2 OUTDOOR CHAIR
         const indoorTableProject = new Project ({
-            name: 'Indoor Chair',
+            name: 'Indoor Table',
             imageURL: './images/outdoorTable', // Edit once the real image is in the images file
             pieceLengths: [12, 12, 24, 24, 24, 24, 36, 36, 42, 42]
         });
@@ -85,7 +85,7 @@ const RonSwansonUser = new User ({
 
 post1.save().then(() => console.log("post1 Saved!"));
 post2.save().then(() => console.log("post2 Saved!"));
-indoorTableProject.save().then(() => console.log("outdoorChairProject Saved!"));
+indoorTableProject.save().then(() => console.log("indoorTableProject Saved!"));
 outdoorTableProject.save().then(() => console.log("outdoorTableProject Saved!"));
 JHurleyUser.save().then(() => console.log("JHurleyUser Saved!"));
 

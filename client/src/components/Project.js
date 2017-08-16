@@ -32,11 +32,11 @@ class Project extends Component {
     _toggleChangeName = () => {
         const changeNameActive = !this.state.changeNameActive;
         this.setState({changeNameActive});
-    }
+    };
     _toggleChangeList = () => {
         const changeListActive = !this.state.changeListActive;
         this.setState({changeListActive});
-    }
+    };
 
     // _determineCutPlan = () => {
     //     const sum = 0;
@@ -53,6 +53,8 @@ class Project extends Component {
         const pieceLengths = this.props.pieceLengths;
         // pieceLengths = '"'.join(pieceLengths);
         console.log('pieceLengths is: ' + pieceLengths);
+        console.log('This project id is: ' + this.props.id);
+        console.log('This project name is: ' + this.props.projectName);
         return(
             <div className="ProjectContainer">
                 <h2>Project Name: {projectName}</h2>
@@ -61,7 +63,9 @@ class Project extends Component {
                         this.state.changeNameActive ? 
                             <input 
                                 type='text' 
-                                placeholder={projectName}/>
+                                placeholder={projectName}
+                                onChange={this.props.handleProjectNameChange}
+                                value={projectName}/>
                             :
                             null
                     }
@@ -100,7 +104,7 @@ class Project extends Component {
                                     : 'Edit Piece Lengths List'}
                                 </button> 
                                 <br />
-                                <button>Delete Project</button>
+                                <button onClick={this.props.deleteProject}>Delete Project</button>
                             </div>
                             :
                             null

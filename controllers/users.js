@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../models/user');
 const Project = require('../models/project');
+const Post = require('../models/post')
 const router = express.Router();
 
 // INDEX

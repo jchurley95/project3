@@ -12,7 +12,6 @@ class CreateUser extends Component {
     render() {
         return(
             <div>
-                
                 <form>
                     <fieldset>
                         <legend><h1>Create Account</h1></legend>
