@@ -27,7 +27,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <div className="App-Navbar">
-              <Link to='/'> 
+              <Link to='/home'> 
                 <img style={iconStyle} src={HomeIcon} />HOME 
               </Link>   
               <h1>ScrapSave</h1> 
