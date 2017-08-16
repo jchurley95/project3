@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Post from './Post';
+import Project from './Project';
+import User from './User';
 
 class Home extends Component {
     constructor(){
         super();
         this.state = {
-            currentUserId: "5993ccb1dd0826f5ad9a07bb",
+            currentUserId: "5993de04a528cf0a20607b3c",
             redirect: false,
             allUsers: [],
             allProjects: [],
@@ -32,23 +35,29 @@ class Home extends Component {
             );
         });
 
-        axios.get(`/api/user/`)
+        axios.get(`/api/post/`)
         .then(res => {
             const allPosts = res.data;
             this.setState(
                 { allPosts }
             );
         });
-        console.log(this.state.allUsers);
-        console.log(this.state.allProjects);
-        console.log(this.state.allPosts);
     }
 
   render() {
+        console.log("allUsers is: ", this.state.allUsers);
+        console.log("allUsers[0] is: ", this.state.allUsers[0]);
+        console.log("allProjects is: ", this.state.allProjects);
+        console.log("allProjects[0] is: ", this.state.allProjects[0]);
+        console.log("allPosts is: ", this.state.allPosts);
+        console.log("allPosts[0] is: ", this.state.allPosts[0]);
     return (
       <div>
         <div>
             <h1>Posts</h1>
+            {this.state.allPosts.map((post) => {
+                return <Post />
+            })}
         </div>
         <div>
             <h1>Projects</h1>

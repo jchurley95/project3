@@ -11,7 +11,8 @@ class App extends Component {
         <div>
           <div>
             <Link to="/">Home</Link>
-            <Link to="/add-project">Add Project</Link>
+            ScrapSave
+            <Link to="/user/:userId">My DIY</Link>
           </div>
           <div>
             <Route exact path="/" component={Home} />

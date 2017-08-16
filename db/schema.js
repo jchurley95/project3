@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 const postSchema = new Schema({
+    title: String,
     content: String,
     created_at: Date,
     updated_at: Date
