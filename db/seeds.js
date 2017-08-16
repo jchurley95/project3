@@ -47,7 +47,7 @@ mongoose.Promise = global.Promise;
 const JHurleyUser = new User ({
     firstName: "Joey",
     lastName: "Hurley",	
-    username: 'JCHurley95',
+    userName: 'JCHurley95',
     password: 'badasskittens',
     company: 'ScrewLooseCarpentry',
     projects: [outdoorTableProject, indoorTableProject],
@@ -81,7 +81,7 @@ JHurleyUser.save().then(() => console.log("JHurleyUser Saved!"));
 const RonSwansonUser = new User ({
     firstName: "Ron",
     lastName: "Swanson",	
-    username: 'RonSwanson',
+    userName: 'RonSwanson',
     password: 'reallygoodpassword',
     company: 'ReallyGoodWoodShop',
     projects: [chairProject],

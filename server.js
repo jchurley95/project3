@@ -3,6 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+
+const UsersController = require("./controllers/users");
+
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI); //mongodb://localhost/fullstack-jeopardy
 
@@ -16,6 +19,7 @@ connection.on('error', (err) => {
   console.log('Mongoose default connection error: ' + err);
 }); 
 
+app.use('/api/users', UsersController);
 app.use(bodyParser.json());
 app.get('/', (req,res) => {
   res.send('Hello world!')
