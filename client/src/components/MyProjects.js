@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Project from './Project';
 import Post from './Post';
-import styled from "styled-components";
-import { Link } from 'react-router-dom'
+import AddProject from './AddProject';
+import { Link } from 'react-router-dom';
 
 
 class MyProjects extends Component {
@@ -19,16 +19,19 @@ class MyProjects extends Component {
     }
 
     componentWillMount(){
-        const id = this.props.match.params.userId;
-        console.log(this.props.currentUserId);
-        axios.get(`/api/user/${id}`)
+        const userId = this.props.match.params.userId;
+        console.log('currentUserId in MyProjects is: ', this.props.currentUserId);
+        axios.get(`/api/user/${userId}`)
         .then(res => {
+            console.log(res.data);
             this.setState({
-                    id: res.data._id,
-                    userName: res.data.userName,
-                    projects: res.data.projects,
-                    posts: res.data.posts
+                id: res.data._id,
+                userName: res.data.userName,
+                projects: res.data.projects,
+                posts: res.data.posts
             });
+            console.log("this.state is now: ", this.state);
+            console.log("this.state.projects is now: ", this.state.projects);
         });
     }
 
@@ -67,29 +70,7 @@ class MyProjects extends Component {
         this.setState({projects});
             console.log("this.state.projects[0].name is: ", this.state.projects[0].name);
             console.log("this.state.projects[index].name is: ", this.state.projects[index].name);
-    };  
-    // _handlePostTitleChange = (event, index) => {
-    //     const title = event.target.value;
-    //         console.log('title is: ', title);
-    //     const posts = [...this.state.posts];
-    //         console.log("posts is: ", posts);
-    //         console.log("posts[0] is: ", posts[0]);
-    //     posts[index].title = title;
-    //     this.setState({posts});
-    //         console.log("this.state.posts[0].title is: ", this.state.posts[0].title);
-    //         console.log("this.state.posts[index].title is: ", this.state.posts[index].title);
-    // };
-    // _handlePostContentChange = (event, index) => {
-    //     const title = event.target.value;
-    //         console.log('title is: ', title);
-    //     const posts = [...this.state.posts];
-    //         console.log("posts is: ", posts);
-    //         console.log("posts[0] is: ", posts[0]);
-    //     posts[index].title = title;
-    //     this.setState({posts});
-    //         console.log("this.state.posts[0].title is: ", this.state.posts[0].title);
-    //         console.log("this.state.posts[index].title is: ", this.state.posts[index].title);
-    // };   
+    };   
     _deleteProject = (index, projectId) => {
             console.log("index in _deleteProject is: ", index)
             console.log("projectId in _deleteProject is: ", projectId);
@@ -113,20 +94,17 @@ class MyProjects extends Component {
 
             <h1>{this.state.userName}'s Projects</h1>
 
-            <Link to={`/user/${this.state.id}/add-project`}>Build New Project </Link>
-            
+            <AddProject userId={this.state.id} addNewProject={this._addNewProjectToProjects}/>
             {this.state.projects.map((project, i) => {
                 return <Project 
-                key={i}
-                id={i}
-                project={project}
-                projectName={this.state.projects[i].name}
-                pieceLengths={this.state.projects[i].pieceLengths}
-                adminView={this.state.adminView}
-                addNewProject={this._addNewProjectToProjects}
-                handleProjectNameChange={this._handleProjectNameChange}
-                handleProjectListChange={this._handleProjectListChange}
-                deleteProject={this._deleteProject}
+                    key={i}
+                    id={i}
+                    project={project}
+                    projectName={this.state.projects[i].name}
+                    pieceLengths={this.state.projects[i].pieceLengths}
+                    adminView={this.state.adminView}
+                    addNewProject={this._addNewProjectToProjects}
+                    deleteProject={this._deleteProject}
                 />
             })}
 
@@ -156,6 +134,29 @@ class MyProjects extends Component {
 }
 
 export default MyProjects;
+
+// _handlePostTitleChange = (event, index) => {
+    //     const title = event.target.value;
+    //         console.log('title is: ', title);
+    //     const posts = [...this.state.posts];
+    //         console.log("posts is: ", posts);
+    //         console.log("posts[0] is: ", posts[0]);
+    //     posts[index].title = title;
+    //     this.setState({posts});
+    //         console.log("this.state.posts[0].title is: ", this.state.posts[0].title);
+    //         console.log("this.state.posts[index].title is: ", this.state.posts[index].title);
+    // };
+    // _handlePostContentChange = (event, index) => {
+    //     const title = event.target.value;
+    //         console.log('title is: ', title);
+    //     const posts = [...this.state.posts];
+    //         console.log("posts is: ", posts);
+    //         console.log("posts[0] is: ", posts[0]);
+    //     posts[index].title = title;
+    //     this.setState({posts});
+    //         console.log("this.state.posts[0].title is: ", this.state.posts[0].title);
+    //         console.log("this.state.posts[index].title is: ", this.state.posts[index].title);
+    // };  
 
 // handlePostTitleChange={this._handlePostTitleChange}
 // handlePostContentChange={this._handlePostContentChange}

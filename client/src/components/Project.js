@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
+import axios from 'axios';
 
 const projectContainer = styled.div`
     border: 2px solid black;
@@ -25,9 +26,28 @@ class Project extends Component {
         this.state = {
             changeNameActive: false,
             changeListActive: false,
-            adminView: false
+            adminView: false,
+            projectName: '',
+            pieceLengths: []
         }
     }
+
+    // componentWillMount(){
+    //     const userId = this.props.userId; 
+    //     const projectId = this.state._id; 
+    //         console.log("User ID in ProjectItem is: " + userId);
+    //         console.log("Project ID in ProjectItem is: " + projectId);
+    //     axios.get(`/api/user/${userId}/project/${projectId}`).then(res => {
+    //         console.log(res.data);
+    //     this.setState({
+    //         projectId: res.data._id,
+    //         projectName: res.data.name,
+    //         pieceLengths: res.data.pieceLengths
+    //     });
+    //         console.log('this.state is: (down below)')
+    //         console.log(this.state);
+    //     });
+    // }
 
     _toggleChangeName = () => {
         const changeNameActive = !this.state.changeNameActive;
@@ -37,6 +57,16 @@ class Project extends Component {
         const changeListActive = !this.state.changeListActive;
         this.setState({changeListActive});
     };
+    _handleProjectNameChange = (event) => {
+        const name = event.target.value;
+            console.log('name is: ', name);
+        this.setState({name});
+    };
+    _handleProjectListChange = (event) => {
+        const pieceLengths = event.target.value;
+            console.log('pieceLengths is: ', pieceLengths);
+        this.setState({pieceLengths});
+    };   
 
     // _determineCutPlan = () => {
     //     const sum = 0;
@@ -64,8 +94,8 @@ class Project extends Component {
                         this.state.changeNameActive ? 
                             <input 
                                 type='text' 
-                                placeholder={projectName}
-                                onChange={this.props.handleProjectNameChange}
+                                placeholder='Project Name'
+                                onChange={this._handleProjectNameChange}
                                 value={projectName}/>
                             :
                             null
@@ -90,7 +120,9 @@ class Project extends Component {
                         this.state.changeListActive ? 
                             <input 
                                 type='text' 
-                                value={pieceLengths}/>
+                                placeholder='piece lengths list'
+                                value={pieceLengths}
+                                onChange={this._handleProjectListChange}/>
                             :
                             null
                     }

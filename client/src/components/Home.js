@@ -47,7 +47,7 @@ class Home extends Component {
   render() {
     return (
         <div className="HomePageContainer">
-            <div className="HomePostsAndProjectsContainer">
+            {/* <div className="HomePostsAndProjectsContainer">
                 <div className="HomePostsContainer">
                     <h1>Posts</h1>
                     {this.state.allPosts.map((post, i) => {
@@ -72,12 +72,12 @@ class Home extends Component {
                         
                     })}
                 </div>
-            </div>
+            </div> */}
             <div className="HomeUsersListContainer">
                 <h1>Users</h1>
                 {this.state.allUsers.map((user, i) => (
                     <div 
-                        adminView={this.state.adminView} 
+                        
                         key={i} 
                         className="UserListItem">
                             <Link to={`/user/${user._id}`}>

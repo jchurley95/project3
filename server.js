@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const app = express();
+const app = express({matchParams: true});
 
 const UsersController = require("./controllers/users");
 const ProjectsController = require("./controllers/projects");
@@ -22,8 +22,8 @@ connection.on('error', (err) => {
 }); 
 
 app.use('/api/user', UsersController);
-app.use('/api/project', ProjectsController);
-app.use('/api/post', PostsController);
+app.use('/api/user/:userId/project', ProjectsController);
+app.use('/api/user/:userId/post', PostsController);
 
 app.use(bodyParser.json());
 

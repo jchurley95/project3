@@ -15,7 +15,7 @@ class App extends Component {
     super();
 
     this.state = {
-      currentUserId: '599463ce8f4a85485dc9c28d'
+      currentUserId: '599487fa2fca5a6e240f4a0e'
     }
   }
   render() {
@@ -23,10 +23,11 @@ class App extends Component {
       height: '50px',
       width: '50px'
     }
+
     return (
       <Router>
         <div className="App">
-          
+
           <div className="App-Navbar">
               <Link to='/home'> 
                 <img style={iconStyle} src={HomeIcon} />HOME 
@@ -41,7 +42,6 @@ class App extends Component {
             <Route exact path="/home" component={Home} />
             <Route exact path="/user/:userId" component={MyProjects}/>
             <Route exact path="/project/:projectId" component={Project} />
-            <Route path="user/:userId/add-project" component={AddProject} />
           </div>
         </div>
       </Router>
