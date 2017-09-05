@@ -139,7 +139,7 @@ class App extends Component {
               <Link to='/'> 
                 <img style={iconStyle} src={HomeIcon} />HOME 
               </Link>   
-              <h1>ScrapSave</h1> 
+              <h1>My DIY</h1> 
               <Link to={`/projects/new`}>
                 <img style={iconStyle} src={BuildIcon} />BUILD
               </Link>

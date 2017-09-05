@@ -19,6 +19,7 @@ body {
   color: black;
   box-shadow: 0 0 20px 10px black;
   border-radius: 4px;
+  
 }
 
 .App-Navbar a {
@@ -32,6 +33,7 @@ body {
 }
 
 .App-Navbar h1 {
+  font-family: 'Gloria Hallelujah', cursive;
   font-size: 40px;
 }
 .App-Main-Container {
@@ -41,12 +43,15 @@ body {
 }
 .App-Projects-Bar {
   width: 25%;
-  border-right: 2px solid black;
+  background-color: rgba(225,225,225,225.3);
+  border-radius: 5px;
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.80) inset;  
 }
 .App-Projects-Bar h1 {
   border-bottom: 2px solid black;
   border-bottom-left-radius: 25px;
   padding: 10px;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 .App-Routes {
   width: 50%;
@@ -57,12 +62,15 @@ body {
 }
 .App-Posts-Bar {
   width: 25%;
-  border-left: 2px solid black;
+  background-color: rgba(225,225,225,225.3);
+  border-radius: 5px;
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.80) inset; 
 }
 .App-Posts-Bar h1 {
   border-bottom: 2px solid black;
   border-bottom-right-radius: 25px;
   padding: 10px;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 .App-Footer {
   border-top: 2px solid black;
@@ -190,4 +198,9 @@ label {
 }
 .New-Container a:hover{
   background-color: rgba(0,0,0,0.5);
+}
+
+.App-Footer {
+  font-size: 20px;
+  font-family: 'Gloria Hallelujah', cursive;
 }
