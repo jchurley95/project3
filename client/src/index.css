@@ -27,16 +27,52 @@ body {
   border: none;
   box-shadow: none;
   background-color: rgba(0,0,0,0);
+  
 }
 
 .App-Navbar h1 {
-  font-size: 50px;
+  font-size: 40px;
 }
+.App-Main-Container {
+  display: flex;
+  justify-content: space-between;
+  height: 570px;
+}
+.App-Projects-Bar {
+  width: 25%;
+  border-right: 2px solid black;
+}
+.App-Projects-Bar h1 {
+  border-bottom: 2px solid black;
+  border-bottom-left-radius: 25px;
+  padding: 10px;
+}
+.App-Routes {
+  width: 50%;
+  text-align: center;
+}
+.App-Routes h1 {
+  padding: 10px;
+}
+.App-Posts-Bar {
+  width: 25%;
+  border-left: 2px solid black;
+}
+.App-Posts-Bar h1 {
+  border-bottom: 2px solid black;
+  border-bottom-right-radius: 25px;
+  padding: 10px;
+}
+.App-Footer {
+  border-top: 2px solid black;
+  height: 20px;
+}
+
 
 a {
   /* box-shadow: 0 0 20px 7px black inset; */
   color: white;
-  border: 1px solid black;
+  border: 2px solid silver;
   padding: 10px;
   border-radius: 10px;
   background-color: rgba(0,0,0,0.1);
@@ -79,10 +115,52 @@ a {
 
 .HomePageContainer{
   display: flex;
+  flex-direction: column;
+}
+
+.HomePageContainer p {
+  border: 2px solid black;
+  border-radius: 25px;
+  margin: 10px;
+  padding: 10px;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+}
+.HomePageContainer a {
+  margin: 10px;
+  padding: 10px;
+  color: white;
+  background-color: rgba(0,0,0,0.3);
+}
+.HomePageContainer a:hover {
+  background-color: rgba(0,0,0,0.5);
 }
 
 .HomeUsersListContainer {
   border: 2px solid black;
   height: 100%;
   margin: 20px;
+}
+
+.submit {
+  background-color: rgba(0,0,0,0.3);
+  color: white;
+  padding: 10px;
+  border-radius: 25px;
+}
+.submit:hover {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.New-Post-Page-Container {
+  display: flex;
+  flex-direction: column;
+}
+.New-Post-Page-Container a{
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0,0,0,0.3);
+}
+.New-Post-Page-Container a:hover{
+  background-color: rgba(0,0,0,0.5);
 }

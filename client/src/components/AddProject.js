@@ -36,7 +36,11 @@ class AddProject extends Component {
                   <fieldset>
                     <legend><h1>Build a New Project</h1></legend>
                     <div><input name="Project Name" type="text" placeholder="Project Name" onChange={this._handleNewProductChange}/></div>
-                    <div><input name="Piece List" type="text" placeholder="Piece Length" onChange={this._handleNewProductChange}/></div>
+                    <br/>
+                    <div><input name="Image URL" type="text" placeholder="Image URL"/></div>
+                    <br/>
+                    <div><input name="Piece List" type="text" placeholder="Piece Length List" onChange={this._handleNewProductChange}/></div>
+                    <br/>
                     <div><input type="submit" value="Create New Product" onSubmit={this.props.addNewProject}/></div>
                   </fieldset>
                 </form>

@@ -53,35 +53,36 @@ const JHurleyUser = new User ({
     projects: [outdoorTableProject, indoorTableProject],
     posts: [post1, post2]
 });
+
 // END User: JCHurley95
 
-// USER: RonSwanson
+// // USER: RonSwanson
 
-    // START RonSwanson Post 1
-        const post3 = new Post ({
-            title: 'I Know More Than You',
-            content: 'Recently went to the local Home Department store. Employee asked me if I needed help. Lol.'
-        });
-    // END RonSwanson Post 1
+//     // START RonSwanson Post 1
+//         const post3 = new Post ({
+//             title: 'I Know More Than You',
+//             content: 'Recently went to the local Home Department store. Employee asked me if I needed help. Lol.'
+//         });
+//     // END RonSwanson Post 1
 
-    // START RonSwanson Project 1
-        const chairProject = new Project ({
-            name: 'Chair',
-            imageURL: './images/outdoorTable', // Edit once the real image is in the images file
-            pieceLengths: [24, 24, 36, 36, 42, 42, 48, 48, 32, 32, 45, 45, 12, 12]
-        });
-    // END RonSwanson Project 1
+//     // START RonSwanson Project 1
+//         const chairProject = new Project ({
+//             name: 'Chair',
+//             imageURL: './images/outdoorTable', // Edit once the real image is in the images file
+//             pieceLengths: [24, 24, 36, 36, 42, 42, 48, 48, 32, 32, 45, 45, 12, 12]
+//         });
+//     // END RonSwanson Project 1
 
-const RonSwansonUser = new User ({
-    firstName: "Ron",
-    lastName: "Swanson",	
-    userName: 'RonSwanson',
-    password: 'reallygoodpassword',
-    company: 'ReallyGoodWoodShop',
-    projects: [chairProject],
-    posts: [post3]
-});
-// END User: RonSwanson
+// const RonSwansonUser = new User ({
+//     firstName: "Ron",
+//     lastName: "Swanson",	
+//     userName: 'RonSwanson',
+//     password: 'reallygoodpassword',
+//     company: 'ReallyGoodWoodShop',
+//     projects: [chairProject],
+//     posts: [post3]
+// });
+// // END User: RonSwanson
 
 post1.save().then(() => console.log("post1 Saved!"));
 post2.save().then(() => console.log("post2 Saved!"));
@@ -89,6 +90,6 @@ indoorTableProject.save().then(() => console.log("indoorTableProject Saved!"));
 outdoorTableProject.save().then(() => console.log("outdoorTableProject Saved!"));
 JHurleyUser.save().then(() => console.log("JHurleyUser Saved!"));
 
-post3.save().then(() => console.log("post3 Saved!"));
-chairProject.save().then(() => console.log("chairProject Saved!"));
-RonSwansonUser.save().then(() => console.log("RonSwanson Saved!"));
+// post3.save().then(() => console.log("post3 Saved!"));
+// chairProject.save().then(() => console.log("chairProject Saved!"));
+// RonSwansonUser.save().then(() => console.log("RonSwanson Saved!"));
