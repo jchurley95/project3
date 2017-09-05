@@ -6,8 +6,6 @@ import Project from './components/Project';
 import Post from './components/Post';
 import AddProject from './components/AddProject';
 import AddPost from './components/AddPost';
-import MyProjects from './components/MyProjects';
-import Entrance from './components/Entrance';
 import HomeIcon from './images/home-icon.ico';
 import BuildIcon from './images/tools-icon.png';
 
