@@ -153,15 +153,41 @@ a {
   background-color: rgba(0,0,0,0.5);
 }
 
-.New-Post-Page-Container {
+legend {
+  color: white;
+  border: 2px solid white;
+  border-radius: 25px;
+  background-color: black;
+  box-shadow: 10px 5px 2px 7px rgba(0,0,0,0.5);
+}
+fieldset {
+  border: 2px solid black;
+  border-radius: 25px;
+  background-color: rgba(0,0,0,0.3);
+  box-shadow: 0 0 15px 10px rgba(0,0,0,0.5) inset;
+  
+}
+fieldset:hover {
+  background-color: rgba(0,0,0,0.5);
+}
+label {
+  color: white;
+}
+.post-content {
+  height: 60px;
+  width: 80%;
+  text-align:center;
+}
+
+.New-Container {
   display: flex;
   flex-direction: column;
 }
-.New-Post-Page-Container a{
+.New-Container a{
   display: flex;
   flex-direction: column;
   background-color: rgba(0,0,0,0.3);
 }
-.New-Post-Page-Container a:hover{
+.New-Container a:hover{
   background-color: rgba(0,0,0,0.5);
 }
