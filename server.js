@@ -21,7 +21,7 @@ connection.on('error', (err) => {
   console.log('Mongoose default connection error: ' + err);
 }); 
 
-app.use('/api/users', UsersController);
+app.use('/api/user', UsersController);
 app.use('/api/projects', ProjectsController);
 app.use('/api/notes', NotesController);
 

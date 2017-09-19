@@ -26,28 +26,25 @@ class Project extends Component {
         this.state = {
             changeNameActive: false,
             changeListActive: false,
-            adminView: false,
             projectName: '',
             pieceLengths: []
         }
     }
 
-    // componentWillMount(){
-    //     const userId = this.props.userId; 
-    //     const projectId = this.state._id; 
-    //         console.log("User ID in ProjectItem is: " + userId);
-    //         console.log("Project ID in ProjectItem is: " + projectId);
-    //     axios.get(`/api/user/${userId}/project/${projectId}`).then(res => {
-    //         console.log(res.data);
-    //     this.setState({
-    //         projectId: res.data._id,
-    //         projectName: res.data.name,
-    //         pieceLengths: res.data.pieceLengths
-    //     });
-    //         console.log('this.state is: (down below)')
-    //         console.log(this.state);
-    //     });
-    // }
+    componentWillMount(){
+        const projectId = this.props.match.params.projectId; 
+            console.log("Project ID in ProjectItem is: " + projectId);
+        axios.get(`/api/projects/${projectId}`)
+        .then(res => {
+            console.log(res.data);
+            this.setState({
+                projectName: res.data.name,
+                pieceLengths: res.data.pieceLengths
+            });
+                console.log('this.state is: (down below)')
+                console.log(this.state);
+        });
+    }
 
     _toggleChangeName = () => {
         const changeNameActive = !this.state.changeNameActive;
@@ -57,6 +54,7 @@ class Project extends Component {
         const changeListActive = !this.state.changeListActive;
         this.setState({changeListActive});
     };
+
     _handleProjectNameChange = (event) => {
         const name = event.target.value;
             console.log('name is: ', name);
@@ -79,12 +77,12 @@ class Project extends Component {
 
     render() {
         
-        const projectName = this.props.projectName;
-        const pieceLengths = this.props.pieceLengths;
+        const projectName = this.state.projectName;
+        const pieceLengths = this.state.pieceLengths;
         // pieceLengths = '"'.join(pieceLengths);
         console.log('pieceLengths is: ' + pieceLengths);
-        console.log('This project id is: ' + this.props.id);
-        console.log('This project name is: ' + this.props.projectName);
+        console.log('This project name is: ' + projectName);
+        
         return(
             <div className="ProjectContainer">
                 <h2>Project Name: {projectName}</h2>
@@ -128,21 +126,14 @@ class Project extends Component {
                     }
                 </div>
                 <div>
-                    {
-                        this.props.adminView ? 
-                            <div>
-                                <button onClick={this._toggleChangeList}>
-                                    {this.state.changeListActive
-                                    ? 'Done Editing'
-                                    : 'Edit Piece Lengths List'}
-                                </button> 
-                                <br />
-                                <hr />
-                                <button onClick={this.props.deleteProject}>Delete Project</button>
-                            </div>
-                            :
-                            null
-                    }
+                    <button onClick={this._toggleChangeList}>
+                        {this.state.changeListActive
+                        ? 'Done Editing'
+                        : 'Edit Piece Lengths List'}
+                    </button> 
+                    <br />
+                    <hr />
+                    <button onClick={this.props.deleteProject}>Delete Project</button>
                 </div>
             </div>
         );

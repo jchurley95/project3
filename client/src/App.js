@@ -8,6 +8,8 @@ import AddProject from './components/AddProject';
 import AddNote from './components/AddNote';
 import UserProfile from './components/UserProfile';
 import GlobalNav from './components/GlobalNav';
+import NotesIndex from './components/NotesIndex';
+import ProjectsIndex from './components/ProjectsIndex';
 
 
 
@@ -110,13 +112,9 @@ class App extends Component {
           <GlobalNav/>
 
           <div className="App-Main-Container">
-            <div className="App-Projects-Bar">
-              <h1>Projects</h1>
 
-              {this.state.projects.map((project, i) => {
-                  <h1>Name is: {project[i].name}</h1>
-              })}
-            </div>
+            <ProjectsIndex projects={this.state.projects} user={this.state.user}/>
+
             <div className="App-Routes">
               <Route exact path="/" component={Home} />
               <Route exact path="/users/:userId" component={UserProfile} />
@@ -124,19 +122,16 @@ class App extends Component {
               <Route exact path="/notes/:noteId" component={Note}/>
               <Route exact path="/projects/new" component={AddProject} />
               <Route exact path="/project/:projectId" component={Project} />
-
             </div>
-            <div className="App-Notes-Bar">
-              <h1>Notes</h1>
 
-              {this.state.notes.map((note, i) => {
-                  <h1>Name is: {note[i].name}</h1>
-              })}
-            </div>
+            <NotesIndex notes={this.state.notes} user={this.state.user}/>
+
           </div>
+
           <div className="App-Footer"> 
               Made with &hearts; @ GA
           </div>
+          
         </div>
       </Router>
     );
