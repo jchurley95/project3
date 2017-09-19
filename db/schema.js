@@ -13,6 +13,7 @@ const noteSchema = new Schema({
 
 const projectSchema = new Schema({
     name: String,
+    description: String,
     imageURL: String,
     projectCost: Number,
     pieceLengths: [],

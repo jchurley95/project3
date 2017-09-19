@@ -26,7 +26,15 @@ class Project extends Component {
         this.state = {
             changeNameActive: false,
             changeListActive: false,
-            project: {}
+            project: {
+                name: '',
+                description: '',
+                imageURL: '',
+                projectCost: 0,
+                pieceLengths: [],
+                cutPlan: [],
+                totalStockBoardNeededThisProject: 0
+            }
         }
     }
 
@@ -80,9 +88,9 @@ class Project extends Component {
     render() {
         
         const projectName = this.state.project.projectName;
-        const pieceLengths = this.state.project.pieceLengths;
+        const description = this.state.project.description;
         // pieceLengths = '"'.join(pieceLengths);
-        console.log('pieceLengths is: ' + pieceLengths);
+        console.log('pieceLengths is: ' + description);
         console.log('This project name is: ' + projectName);
         
         return(
@@ -96,32 +104,27 @@ class Project extends Component {
                                 type='text' 
                                 placeholder='Project Name'
                                 onChange={this._handleProjectNameChange}
-                                value={projectName}/>
+                                value={this.state.project.projectName}/>
                             :
                             null
                     }
                 </div>
                 <div>
-                    {
-                        this.props.adminView ? 
                             <div>
                                 <button onClick={this._toggleChangeName}>{this.state.changeNameActive
                                     ? 'Done Editing'
                                     : 'Edit Project Name'}
                                 </button>
                             </div>
-                            :
-                            null
-                    }
                 </div>
-                <h3>Piece Lengths: {pieceLengths} </h3> 
+                <h3>Description: {description} </h3> 
                 <div>
                     {
-                        this.state.changeListActive ? 
+                        this.state.changeDescriptionActive ? 
                             <input 
                                 type='text' 
-                                placeholder='piece lengths list'
-                                value={pieceLengths}
+                                placeholder='description'
+                                value={description}
                                 onChange={this._handleProjectListChange}/>
                             :
                             null
@@ -131,7 +134,7 @@ class Project extends Component {
                     <button onClick={this._toggleChangeList}>
                         {this.state.changeListActive
                         ? 'Done Editing'
-                        : 'Edit Piece Lengths List'}
+                        : 'Edit Description'}
                     </button> 
                     <br />
                     <hr />
