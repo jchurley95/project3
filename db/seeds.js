@@ -2,11 +2,11 @@ require("dotenv").config();
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
 
-var Post = require('../models/post');
+var Note = require('../models/note');
 var Project = require('../models/project');
 var User = require('../models/user');
 
-Post.remove({}, (err) => console.log(err));
+Note.remove({}, (err) => console.log(err));
 Project.remove({}, (err) => console.log(err));
 User.remove({}, (err) => console.log(err));
 
@@ -15,18 +15,18 @@ User.remove({}, (err) => console.log(err));
 mongoose.Promise = global.Promise;
 // USER: JCHurley95
 
-    // START JCHurley95 Post 1
-        const post1 = new Post ({
-            title: 'Desperate For Work',
-            content: 'Please, anybody, I am broke. (404)285-6677 @screwloosecarpentry on instagram'
+    // START JCHurley95 Note 1
+        const note1 = new Note ({
+            title: 'Ideas for computer desk',
+            content: 'Put a piano hinge on the bottom side of the drawer face, make the inside lip a ruler using the hinge as a guide.'
         });
-    // END JCHurley95 Post 1
-    // START JCHurley95 Post 2
-        const post2 = new Post ({
-            title: 'Will Build Stuff For Food',
-            content: 'Willing to trade beautiful works of art for lunch food, Ponce City is way too expensive'
+    // END JCHurley95 Note 1
+    // START JCHurley95 Note 2
+        const note2 = new Note ({
+            title: 'Start recycling using a smelting forge',
+            content: 'Recycle aluminum cans by melting them down in a DIY forge. Just need a proper plant pot with a hole in it, pvc pipe, and already have the heat gun. Pretty simple to make and pretty Dad has worked with one before.'
         });
-    // END JCHurley95 Post 2
+    // END JCHurley95 Note 2
 
     // START JCHurley95 Project 1
         const outdoorTableProject = new Project ({
@@ -51,45 +51,14 @@ const JHurleyUser = new User ({
     password: 'badasskittens',
     company: 'ScrewLooseCarpentry',
     projects: [outdoorTableProject, indoorTableProject],
-    posts: [post1, post2]
+    notes: [note1, note2]
 });
 
 // END User: JCHurley95
 
-// // USER: RonSwanson
 
-//     // START RonSwanson Post 1
-//         const post3 = new Post ({
-//             title: 'I Know More Than You',
-//             content: 'Recently went to the local Home Department store. Employee asked me if I needed help. Lol.'
-//         });
-//     // END RonSwanson Post 1
-
-//     // START RonSwanson Project 1
-//         const chairProject = new Project ({
-//             name: 'Chair',
-//             imageURL: './images/outdoorTable', // Edit once the real image is in the images file
-//             pieceLengths: [24, 24, 36, 36, 42, 42, 48, 48, 32, 32, 45, 45, 12, 12]
-//         });
-//     // END RonSwanson Project 1
-
-// const RonSwansonUser = new User ({
-//     firstName: "Ron",
-//     lastName: "Swanson",	
-//     userName: 'RonSwanson',
-//     password: 'reallygoodpassword',
-//     company: 'ReallyGoodWoodShop',
-//     projects: [chairProject],
-//     posts: [post3]
-// });
-// // END User: RonSwanson
-
-post1.save().then(() => console.log("post1 Saved!"));
-post2.save().then(() => console.log("post2 Saved!"));
+note1.save().then(() => console.log("note1 Saved!"));
+note2.save().then(() => console.log("note2 Saved!"));
 indoorTableProject.save().then(() => console.log("indoorTableProject Saved!"));
 outdoorTableProject.save().then(() => console.log("outdoorTableProject Saved!"));
 JHurleyUser.save().then(() => console.log("JHurleyUser Saved!"));
-
-// post3.save().then(() => console.log("post3 Saved!"));
-// chairProject.save().then(() => console.log("chairProject Saved!"));
-// RonSwansonUser.save().then(() => console.log("RonSwanson Saved!"));

@@ -3,11 +3,11 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import Project from './components/Project';
-import Post from './components/Post';
+import Note from './components/Note';
 import AddProject from './components/AddProject';
-import AddPost from './components/AddPost';
-import HomeIcon from './images/home-icon.ico';
-import BuildIcon from './images/tools-icon.png';
+import AddNote from './components/AddNote';
+import UserProfile from './components/UserProfile';
+import GlobalNav from './components/GlobalNav';
 
 
 
@@ -16,37 +16,12 @@ class App extends Component {
     super();
 
     this.state = {
-      currentUser: {
-        username: "JCHurley95",
-        currentUserId: '599487fa2fca5a6e240f4a0e'
-      },
+      user: {},
       projects: [],
-      posts: [],
-      users: []
+      notes: [],
     }
   }
 
-  _getUsers = () => {
-    axios.get('/api/users')
-      .then((res) => {
-        const users = res.data;
-        this.setState({users});
-      })
-  }
-  _getProjects = () => {
-    axios.get('/api/projects')
-      .then((res) => {
-        const projects = res.data;
-        this.setState({projects});
-      })
-  }
-  _getPosts = () => {
-    axios.get('/api/posts')
-      .then((res) => {
-        const posts = res.data;
-        this.setState({posts});
-      })
-  }
   // _addNewProjectToProjects = (newProject) => {
   //   const projects = [...this.state.projects];
   //       console.log('projects is: ', projects);
@@ -99,51 +74,40 @@ class App extends Component {
   // }
 
   componentWillMount(){
-    console.log("currentUserId in HomePage is: ", this.props.currentUserId);
-    axios.get(`/api/user/`)
-    .then(res => {
-        const users = res.data;
-        this.setState(
-            { users }
-        );
-    });
+    this._getUser();
+    this._getProjects();
+    this._getNotes();
+  }
 
-    axios.get(`/api/project/`)
-    .then(res => {
+  _getUser = () => {
+    axios.get('/api/user')
+      .then((res) => {
+        const user = res.data;
+        this.setState({user});
+      })
+  }
+  _getProjects = () => {
+    axios.get('/api/projects')
+      .then((res) => {
         const projects = res.data;
-        this.setState(
-            { projects }
-        );
-    });
-
-    axios.get(`/api/post/`)
-    .then(res => {
-        const posts = res.data;
-        this.setState(
-            { posts }
-        );
-    });
+        this.setState({projects});
+      })
+  }
+  _getNotes = () => {
+    axios.get('/api/notes')
+      .then((res) => {
+        const notes = res.data;
+        this.setState({notes});
+      })
   }
 
   render() {
-    const iconStyle = {
-      height: '50px',
-      width: '50px'
-    }
 
     return (
       <Router>
         <div className="App">
 
-          <div className="App-Navbar">
-              <Link to='/'> 
-                <img style={iconStyle} src={HomeIcon} />HOME 
-              </Link>   
-              <h1>My DIY</h1> 
-              <Link to={`/projects/new`}>
-                <img style={iconStyle} src={BuildIcon} />BUILD
-              </Link>
-          </div>
+          <GlobalNav/>
 
           <div className="App-Main-Container">
             <div className="App-Projects-Bar">
@@ -155,16 +119,18 @@ class App extends Component {
             </div>
             <div className="App-Routes">
               <Route exact path="/" component={Home} />
-              <Route exact path="/posts/new" component={AddPost} />
-              <Route exact path="/post/:postId" component={Post}/>
+              <Route exact path="/users/:userId" component={UserProfile} />
+              <Route exact path="/notes/new" component={AddNote} />
+              <Route exact path="/notes/:noteId" component={Note}/>
               <Route exact path="/projects/new" component={AddProject} />
               <Route exact path="/project/:projectId" component={Project} />
-            </div>
-            <div className="App-Posts-Bar">
-              <h1>Posts</h1>
 
-              {this.state.projects.map((project, i) => {
-                  <h1>Name is: {project[i].name}</h1>
+            </div>
+            <div className="App-Notes-Bar">
+              <h1>Notes</h1>
+
+              {this.state.notes.map((note, i) => {
+                  <h1>Name is: {note[i].name}</h1>
               })}
             </div>
           </div>

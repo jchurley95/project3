@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 
-class Post extends Component {
+class Note extends Component {
     constructor() {
         super();
 
         this.state = {
             changeTitleActive: false,
-            changeContentActive: false,
-            adminView: false
+            changeContentActive: false
         }
     }
 
@@ -20,11 +19,11 @@ class Post extends Component {
         this.setState({changeContentActive});
     };
     render() {
-        const postTitle = this.props.title;
-        const postContent = this.props.content;
+        const noteTitle = this.props.title;
+        const noteContent = this.props.content;
         return(
-            <div className="PostContainer">
-                <h2>Post Title: {postTitle}</h2>
+            <div className="NoteContainer">
+                <h2>Note Title: {noteTitle}</h2>
                 <hr />
                 {/* <div>
                     {
@@ -52,7 +51,7 @@ class Post extends Component {
                             null
                     }
                 </div> */}
-                <p>{postContent}</p>
+                <p>{noteContent}</p>
                 {/* <div>
                     {
                         this.state.changeContentActive ? 
@@ -86,4 +85,4 @@ class Post extends Component {
     }
 }
 
-export default Post;
+export default Note;

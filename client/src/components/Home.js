@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Post from './Post';
+import Note from './Note';
 import Project from './Project';
 
 class Home extends Component {
@@ -20,18 +20,12 @@ class Home extends Component {
   render() {
     return (
         <div className="HomePageContainer">
-            <h1>Home</h1>
-            <p>
-                ScrapSave is an open one-stop-shop for sharing and editing projects, tips, and tricks for fellow DIY'ers.
-            </p>
             <Link to={`/projects/new`}>
-                Share A Project
+                Build A Project
             </Link>
-            <Link to={`/posts/new`}>
-                Leave A Post
+            <Link to={`/notes/new`}>
+                Make a Note
             </Link>
-            
-
         </div>
     );
   }

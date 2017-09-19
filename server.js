@@ -6,7 +6,7 @@ const app = express({matchParams: true});
 
 const UsersController = require("./controllers/users");
 const ProjectsController = require("./controllers/projects");
-const PostsController = require("./controllers/posts");
+const NotesController = require("./controllers/notes");
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI); //mongodb://localhost/fullstack-jeopardy
@@ -21,9 +21,9 @@ connection.on('error', (err) => {
   console.log('Mongoose default connection error: ' + err);
 }); 
 
-app.use('/api/user', UsersController);
-app.use('/api/user/:userId/project', ProjectsController);
-app.use('/api/user/:userId/post', PostsController);
+app.use('/api/users', UsersController);
+app.use('/api/projects', ProjectsController);
+app.use('/api/notes', NotesController);
 
 app.use(bodyParser.json());
 

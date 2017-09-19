@@ -12,14 +12,13 @@ body {
 .App-Navbar {
   padding: 10px;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
-  background-image: url('./images/navbar_back.jpg');
+  background-color: rgba(238, 119, 9, 0.4);
   background-size: stretch;
   color: black;
   box-shadow: 0 0 20px 10px black;
-  border-radius: 4px;
-  
+  height: 100px;
 }
 
 .App-Navbar a {
@@ -29,11 +28,10 @@ body {
   border: none;
   box-shadow: none;
   background-color: rgba(0,0,0,0);
-  
 }
 
 .App-Navbar h1 {
-  font-family: 'Gloria Hallelujah', cursive;
+  /* font-family: 'Gloria Hallelujah', cursive; */
   font-size: 40px;
 }
 .App-Main-Container {
@@ -42,10 +40,10 @@ body {
   height: 750px;
 }
 .App-Projects-Bar {
+  margin-top: 10px;
   width: 25%;
-  background-color: rgba(225,225,225,225.3);
-  border-radius: 5px;
-  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.80) inset;  
+  background-color: rgba(238, 119, 9, 0.4);
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.80) ;  
 }
 .App-Projects-Bar h1 {
   border-bottom: 2px solid black;
@@ -60,13 +58,13 @@ body {
 .App-Routes h1 {
   padding: 10px;
 }
-.App-Posts-Bar {
+.App-Notes-Bar {
+  margin-top: 10px;
   width: 25%;
-  background-color: rgba(225,225,225,225.3);
-  border-radius: 5px;
-  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.80) inset; 
+  background-color: rgba(238, 119, 9, 0.4);
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.80); 
 }
-.App-Posts-Bar h1 {
+.App-Notes-Bar h1 {
   border-bottom: 2px solid black;
   border-bottom-right-radius: 25px;
   padding: 10px;
@@ -106,7 +104,7 @@ a {
   margin: 20px;
 }
 
-.PostContainer {
+.NoteContainer {
   background-image: url('./images/project_wood.jpg');
   color: white;
   border-radius: 25px;
@@ -124,7 +122,8 @@ a {
 
 .HomePageContainer{
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .HomePageContainer p {
@@ -181,7 +180,7 @@ fieldset:hover {
 label {
   color: white;
 }
-.post-content {
+.Note-content {
   height: 60px;
   width: 80%;
   text-align:center;

@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 // Use native promises
 mongoose.Promise = global.Promise;
 
-const postSchema = new Schema({
+const noteSchema = new Schema({
     title: String,
     content: String,
     created_at: Date,
@@ -29,12 +29,12 @@ const userSchema = new Schema({
     password: String,
     company: String,
     projects: [projectSchema],
-    posts: [postSchema],
+    notes: [noteSchema],
     created_at: Date,
     updated_at: Date
 });
 
-postSchema.pre('save', function(next){
+noteSchema.pre('save', function(next){
   now = new Date();
   this.updated_at = now;
   if ( !this.created_at ) {
@@ -59,12 +59,12 @@ userSchema.pre('save', function(next){
   next();
 });
 
-const Post = mongoose.model('Post', postSchema);
+const Note = mongoose.model('Note', noteSchema);
 const Project = mongoose.model('Project', projectSchema);
 const User = mongoose.model('User', userSchema);
 
 module.exports = {
-    Post: Post,
+    Note: Note,
     Project: Project,
     User: User
 };
