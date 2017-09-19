@@ -6,7 +6,6 @@ body {
   background-size: stretch;
   background-attachment: fixed;
   background-position: center;
-  text-align: center;
 }
 a {
   /* box-shadow: 0 0 20px 7px black inset; */
@@ -38,11 +37,13 @@ a {
   padding: 10px;
   text-decoration: none;
   margin: 10px; 
+  height: 90%;
 }
 
 .App-Navbar h1 {
   /* font-family: 'Gloria Hallelujah', cursive; */
   font-size: 40px;
+  
 }
 .App-Main-Container {
   display: flex;
@@ -53,11 +54,12 @@ a {
   margin-top: 10px;
   width: 25%;
   background-color: rgba(238, 119, 9, 0.4);
-  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.80) ;  
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.80);  
 }
 .App-Projects-Bar h1, .App-Notes-Bar h1 {
   border-bottom: 2px solid black;
   padding: 10px;
+  text-align: center;
   /* font-family: 'Gloria Hallelujah', cursive; */
 }
 .App-Projects-Bar a, .App-Notes-Bar a {
@@ -88,7 +90,6 @@ a {
   color: white;
   border-radius: 25px;
   opacity: 1;
-  text-align: center;
   padding: 20px;
   margin: 20px;
 }
@@ -98,7 +99,6 @@ a {
   color: white;
   border-radius: 25px;
   opacity: 1;
-  text-align: center;
   padding: 20px;
   margin: 20px;
 }
@@ -187,6 +187,32 @@ label {
 }
 
 .App-Footer {
+  margin-top: 10px;
   font-size: 20px;
   font-family: 'Gloria Hallelujah', cursive;
+  background-color: rgba(238, 119, 9, 0.4);  
+  height: 50px;
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.80);
+}
+
+@media only screen and (max-width: 500px) {
+  .App-Navbar {
+      width: 100%;
+      padding: 2px;
+  }
+  .App-Navbar a {
+    height: 10px;
+    width: 10px;
+    margin: 2px;
+  }
+  .App-Navbar h1 {
+    font-size: 20px;
+  }
+  button {
+    color: white;
+  }
+  .App-Projects-Bar h1, .App-Notes-Bar h1 {
+    font-size: 20px;
+    text-align: center;
+  }
 }
