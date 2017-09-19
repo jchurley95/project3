@@ -26,24 +26,26 @@ class Project extends Component {
         this.state = {
             changeNameActive: false,
             changeListActive: false,
-            projectName: '',
-            pieceLengths: []
+            project: {}
         }
     }
 
-    componentWillMount(){
-        const projectId = this.props.match.params.projectId; 
-            console.log("Project ID in ProjectItem is: " + projectId);
-        axios.get(`/api/projects/${projectId}`)
-        .then(res => {
-            console.log(res.data);
-            this.setState({
-                projectName: res.data.name,
-                pieceLengths: res.data.pieceLengths
-            });
-                console.log('this.state is: (down below)')
-                console.log(this.state);
-        });
+    componentWillMount() {
+        this._getProject();
+    }
+    _getProject = () => {
+        const id = this.props.match.params.projectId;
+        console.log(id)
+        axios.get('/api/projects')
+          .then((res) => {
+            const projects = res.data;
+            projects.map(project => {
+                if (project._id === id) {
+                    console.log(project);
+                    this.setState({project});
+                }
+            })
+          })
     }
 
     _toggleChangeName = () => {
@@ -77,8 +79,8 @@ class Project extends Component {
 
     render() {
         
-        const projectName = this.state.projectName;
-        const pieceLengths = this.state.pieceLengths;
+        const projectName = this.state.project.projectName;
+        const pieceLengths = this.state.project.pieceLengths;
         // pieceLengths = '"'.join(pieceLengths);
         console.log('pieceLengths is: ' + pieceLengths);
         console.log('This project name is: ' + projectName);

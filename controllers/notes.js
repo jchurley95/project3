@@ -11,9 +11,7 @@ router.get("/", (req,res) => {
 
 //SHOW POST
 router.get("/:id", (req,res) => {
-  Post.findById(req.params.id).then((notes) => {
-    res.json(notes);
-  });
+  res.json(Note.findById(req.params.id))
 });
 
 module.exports = router;

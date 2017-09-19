@@ -116,12 +116,12 @@ class App extends Component {
             <ProjectsIndex projects={this.state.projects} user={this.state.user}/>
 
             <div className="App-Routes">
-              <Route exact path="/" component={Home} />
-              <Route exact path="/users/:userId" component={UserProfile} />
+              <Route exact path="/" component={Home} user={this.state.user} projects={this.state.projects} notes={this.state.notes}/>
+              <Route exact path="/users/:userId" component={UserProfile} user={this.state.user}/>
               <Route exact path="/notes/new" component={AddNote} />
-              <Route exact path="/notes/:noteId" component={Note}/>
+              <Route exact path="/notes/:noteId" component={Note} notes={this.state.notes}/>
               <Route exact path="/projects/new" component={AddProject} />
-              <Route exact path="/project/:projectId" component={Project} />
+              <Route exact path="/projects/:projectId" component={Project} projects={this.state.projects}/>
             </div>
 
             <NotesIndex notes={this.state.notes} user={this.state.user}/>
