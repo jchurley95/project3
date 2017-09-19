@@ -9,9 +9,11 @@ router.get("/", (req,res) => {
   })
 });
 
-//SHOW POST
+//SHOW NOTE
 router.get("/:id", (req,res) => {
-  res.json(Note.findById(req.params.id))
+  Note.findById(req.params.id).then((note) => {
+    res.json(note);
+  });
 });
 
 module.exports = router;

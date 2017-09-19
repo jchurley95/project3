@@ -12,14 +12,13 @@ router.get("/", (req,res) => {
 
 //SHOW PROJECT
 router.get("/:id", (req,res) => {
-  Project.findById(req.params.id).then((projects) => {
-    res.json(projects);
+  Project.findById(req.params.id).then((project) => {
+    res.json(project);
   });
 });
 
-// //DELETE USER's PROJECT
-//   // Delete DELETE /:id
-// router.delete("/:id", (req, res) => {
+//Delete Project
+// router.get("/:id", (req, res) => {
 //   console.log('req.params in delete route in project controller is: ', req.params);
 //   console.log('userID in controller is: ', req.params.userId)
 //   User.findById(req.params.userId).then(user => {
@@ -35,5 +34,7 @@ router.get("/:id", (req,res) => {
 //   })
 //   .catch(err => console.log('ERROR in controller delete route', err))
 // })
+
+
 
 module.exports = router;

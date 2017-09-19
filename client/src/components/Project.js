@@ -25,7 +25,7 @@ class Project extends Component {
 
         this.state = {
             changeNameActive: false,
-            changeListActive: false,
+            changeDescriptionActive: false,
             project: {
                 name: '',
                 description: '',
@@ -44,38 +44,53 @@ class Project extends Component {
     _getProject = () => {
         const id = this.props.match.params.projectId;
         console.log(id)
-        axios.get('/api/projects')
+        axios.get(`/api/projects/${id}`)
           .then((res) => {
-            const projects = res.data;
-            projects.map(project => {
-                if (project._id === id) {
-                    console.log(project);
-                    this.setState({project});
-                }
-            })
+            const project = res.data;
+            this.setState({project});
           })
     }
+    
 
     _toggleChangeName = () => {
         const changeNameActive = !this.state.changeNameActive;
         this.setState({changeNameActive});
     };
-    _toggleChangeList = () => {
-        const changeListActive = !this.state.changeListActive;
-        this.setState({changeListActive});
+    _toggleChangeDescription = () => {
+        const changeDescriptionActive = !this.state.changeDescriptionActive;
+        this.setState({changeDescriptionActive});
     };
-
-    _handleProjectNameChange = (event) => {
-        const name = event.target.value;
+    _handleProjectNameChange = (e) => {
+        e.preventDefault();
+        const name = e.target.value;
             console.log('name is: ', name);
-        this.setState({name});
+        this.setState({project: {
+            name: name
+        }});
     };
-    _handleProjectListChange = (event) => {
-        const pieceLengths = event.target.value;
-            console.log('pieceLengths is: ', pieceLengths);
-        this.setState({pieceLengths});
+    _handleProjectDescriptionChange = (e) => {
+        e.preventDefault();
+        const description = e.target.value;
+            console.log('description is: ', description);
+            this.setState({project: {
+                description: description
+            }});
     };   
 
+    _deleteProject = (index, projectId) => {
+        console.log("index in _deleteProject is: ", index)
+        console.log("projectId in _deleteProject is: ", projectId);
+        const userId = this.props.match.params.userId;
+        // const projectId = this.props.match.params.projectId;
+        const projects = [...this.state.projects];
+            console.log("projects in _deleteProject is: ", projects);
+        projects.splice(index, 1);
+        this.setState({projects});
+            console.log("User ID in _deleteProject is : " + userId);
+        axios.delete(`/api/user/${userId}/project/${projectId}`).then(res => {
+            console.log("Project ID _deleteProject is: ", projectId);
+        });
+    }
     // _determineCutPlan = () => {
     //     const sum = 0;
     //     for(var i = 0; i < this.props.pieceLengths.length; i++){
@@ -87,7 +102,7 @@ class Project extends Component {
 
     render() {
         
-        const projectName = this.state.project.projectName;
+        const projectName = this.state.project.name;
         const description = this.state.project.description;
         // pieceLengths = '"'.join(pieceLengths);
         console.log('pieceLengths is: ' + description);
@@ -111,7 +126,8 @@ class Project extends Component {
                 </div>
                 <div>
                             <div>
-                                <button onClick={this._toggleChangeName}>{this.state.changeNameActive
+                                <button onClick={this._toggleChangeName}>
+                                    {this.state.changeNameActive
                                     ? 'Done Editing'
                                     : 'Edit Project Name'}
                                 </button>
@@ -122,23 +138,23 @@ class Project extends Component {
                     {
                         this.state.changeDescriptionActive ? 
                             <input 
-                                type='text' 
+                                type='textarea' 
                                 placeholder='description'
-                                value={description}
-                                onChange={this._handleProjectListChange}/>
+                                value={this.state.project.description}
+                                onChange={this._handleProjectDescriptionChange} />
                             :
                             null
                     }
                 </div>
                 <div>
-                    <button onClick={this._toggleChangeList}>
-                        {this.state.changeListActive
+                    <button onClick={this._toggleChangeDescription}>
+                        {this.state.changeDescriptionActive
                         ? 'Done Editing'
                         : 'Edit Description'}
                     </button> 
                     <br />
                     <hr />
-                    <button onClick={this.props.deleteProject}>Delete Project</button>
+                    <button onClick={this._deleteProject}>Delete Project</button>
                 </div>
             </div>
         );

@@ -18,15 +18,10 @@ class Note extends Component {
     _getNote = () => {
         const id = this.props.match.params.noteId;
         console.log(id)
-        axios.get('/api/notes')
+        axios.get(`/api/notes/${id}`)
           .then((res) => {
-            const notes = res.data;
-            notes.map(note => {
-                if (note._id === id) {
-                    console.log(note);
-                    this.setState({note});
-                }
-            })
+            const note = res.data;
+            this.setState({note});
           })
     }
 
