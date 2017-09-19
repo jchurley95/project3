@@ -77,19 +77,16 @@ class Project extends Component {
             }});
     };   
 
-    _deleteProject = (index, projectId) => {
-        console.log("index in _deleteProject is: ", index)
-        console.log("projectId in _deleteProject is: ", projectId);
-        const userId = this.props.match.params.userId;
-        // const projectId = this.props.match.params.projectId;
-        const projects = [...this.state.projects];
-            console.log("projects in _deleteProject is: ", projects);
-        projects.splice(index, 1);
-        this.setState({projects});
-            console.log("User ID in _deleteProject is : " + userId);
-        axios.delete(`/api/user/${userId}/project/${projectId}`).then(res => {
-            console.log("Project ID _deleteProject is: ", projectId);
-        });
+    _deleteProject = () => {
+        axios.delete(`/api/projects/${this.props.match.params.projectId}/delete`)
+        .then(res => {
+            console.log("successfully deleted project");
+            res.render('/')
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        
     }
     // _determineCutPlan = () => {
     //     const sum = 0;
@@ -117,7 +114,7 @@ class Project extends Component {
                         this.state.changeNameActive ? 
                             <input 
                                 type='text' 
-                                placeholder='Project Name'
+                                placeholder={this.state.project.name}
                                 onChange={this._handleProjectNameChange}
                                 value={this.state.project.projectName}/>
                             :

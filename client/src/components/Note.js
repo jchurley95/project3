@@ -82,7 +82,7 @@ class Note extends Component {
                         </button> 
                         <br />
                         <hr />
-                        <button onClick={this.props.deleteNote}>Delete Note</button>
+                        <button onClick={this._deleteNote}>Delete Note</button>
                     </div>
                 </div>
             </div>

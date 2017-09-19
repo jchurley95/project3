@@ -65,6 +65,7 @@ a {
 .App-Projects-Bar a, .App-Notes-Bar a {
   color: white;
   border: none;
+  margin: 10px;
 }
 
 .App-Routes {
@@ -108,9 +109,9 @@ a {
 }
 
 .HomePageContainer{
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
 }
 
 .HomePageContainer p {

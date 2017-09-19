@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 const ProjectsIndex = (props) => {
-    const user = props.user;
     const projects = props.projects;
     return (
         <div className="App-Projects-Bar">

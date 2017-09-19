@@ -17,23 +17,16 @@ router.get("/:id", (req,res) => {
   });
 });
 
-//Delete Project
-// router.get("/:id", (req, res) => {
-//   console.log('req.params in delete route in project controller is: ', req.params);
-//   console.log('userID in controller is: ', req.params.userId)
-//   User.findById(req.params.userId).then(user => {
-//     const indexToDelete = user.projects.findIndex(project => {
-//       return project.id !== req.params.id
-//     });
-//     user.projects.splice(indexToDelete, 1);
-//     return user.save();
-//   })
-//   .then((project) => {
-//     console.log(project);
-//     res.send("Successfully Deleted");
-//   })
-//   .catch(err => console.log('ERROR in controller delete route', err))
-// })
+//DELETE Project
+router.delete("/:id/delete", (req, res) => {
+  Project.findByIdAndRemove(req.params.id).then((project) => {
+    res.json(project);
+  })
+  .then(() => {
+    res.send("Successfully Deleted");
+  })
+  .catch(err => console.log('ERROR in controller delete route', err))
+})
 
 
 

@@ -29,8 +29,8 @@ const userSchema = new Schema({
     userName: String,
     password: String,
     company: String,
-    projects: [projectSchema],
-    notes: [noteSchema],
+    projects: [projectSchema], // for future developments
+    notes: [noteSchema], // for future developments
     created_at: Date,
     updated_at: Date
 });
