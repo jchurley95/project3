@@ -97,6 +97,7 @@ a {
 }
 
 .ProjectContainer {
+  height: 720px;
   background-image: url('./images/project_wood.jpg');
   color: white;
   border-radius: 25px;
@@ -106,6 +107,7 @@ a {
 }
 
 .NoteContainer {
+  height: 720px;
   background-image: url('./images/project_wood.jpg');
   color: white;
   border-radius: 25px;
@@ -230,7 +232,7 @@ label {
     font-size: 20px;
     text-align: center;
   }
-  .HomePageContainer{
+  .HomePageContainer, .NoteContainer, .ProjectContainer{
     height: 580px;
   }
 }

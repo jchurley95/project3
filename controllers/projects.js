@@ -17,22 +17,24 @@ router.get("/:id", (req,res) => {
   });
 });
 
-//CREATE Project
-router.post("/", (req, res) => {
-  const projectIdToUpdate = req.params.projectId;
-  console.log(projectIdToUpdate);
-  Project.findByIdAndUpdate(projectIdToUpdate)
-    .then(project => {
-      console.log("successfully updated project with " + projectIdToUpdate);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+//Create Project
+router.post("/:id", (req, res) => {
+  console.log(req.body)
+  const newProject = req.body;
+  newProject.save();
 });
 
 //UPDATE Project
 router.put("/:id", (req, res) => {
-  
+  const projectIdToUpdate = req.params.projectId;
+  console.log(projectIdToUpdate);
+  Project.findByIdAndUpdate(projectIdToUpdate)
+    .then(project => {
+      console.log("successfully updadted project with " + projectIdToUpdate);
+    })
+    .catch(err => {
+      console.log(err);
+    })
 });
   
 
