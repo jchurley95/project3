@@ -81,7 +81,6 @@ class Project extends Component {
         axios.delete(`/api/projects/${this.props.match.params.projectId}/delete`)
         .then(res => {
             console.log("successfully deleted project");
-            res.render('/')
         })
         .catch(err => {
             console.log(err)

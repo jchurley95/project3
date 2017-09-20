@@ -8,7 +8,15 @@ class AddProject extends Component {
     super();
 
     this.state = {
-        newProject: {}
+        newProject: {
+            name: '',
+            description: '',
+            imageURL: '',
+            projectCost: 0,
+            pieceLengths: [],
+            cutPlan: [],
+            totalStockBoardNeededThisProject: 0,
+        }
     }
   }
 
@@ -19,10 +27,16 @@ class AddProject extends Component {
       newProject[projectName] = name;
       this.setState({newProject})
   };
-  _addNewProject = (event) => {
-      event.preventDefault();
-      this.props.addNewProjectToProjects(this.state.newProject);
-  };
+  _addNewProjectToProjects = (newProject) => {
+    const projects = {...this.state.projects};
+        console.log('projects is: ', projects);
+    projects.push(newProject);
+        console.log('pushed newProject, now projects is: ', projects);
+    this.setState({projects});
+    axios.post('/api/projects', this.state).then(res => {
+
+    })
+};
 
     render() {
         return (
@@ -38,13 +52,16 @@ class AddProject extends Component {
                         <div><label>Project Image URL</label></div>
                         <div><input name="Image URL" type="text" placeholder="Image URL"/></div>
                         <br/>
+                        <div><label>Project Description</label></div>
+                        <div><input name="Image URL" type="text" placeholder="Image URL"/></div>
+                        <br/>
                         <div><label>Project Piece Lengths List</label></div>
                         <div><input name="Piece List" type="text" placeholder="Piece Length List" onChange={this._handleNewProductChange}/></div>
                         <br/>
-                        <div><input className="submit" type="submit" value="Create New Product" onSubmit={this._addNewProject}/></div>
+                        <div><input className="submit" type="submit" value="Create New Product" onSubmit={this._addNewProjectToProjects}/></div>
                     </fieldset>
                 </form>
-                <div>
+                {/* <div>
                     <Link to={`/posts/new`}>
                         Leave A Post
                     </Link>
@@ -53,7 +70,7 @@ class AddProject extends Component {
                     <Link to={`/`}>
                         Go Home
                     </Link>
-                </div>
+                </div> */}
             </div>
         );
 

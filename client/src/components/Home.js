@@ -100,13 +100,16 @@ class Home extends Component {
     return (
 
         <div className="HomePageContainer">
+            <div className="HomePage-content">
+                
+                {/* <Link to={`/projects/new`}>
+                    Build A Project
+                </Link>
+                <Link to={`/notes/new`}>
+                    Make a Note
+                </Link> */}
+            </div>
             <ProjectsIndex projects={projects}/>
-            <Link to={`/projects/new`}>
-                Build A Project
-            </Link>
-            <Link to={`/notes/new`}>
-                Make a Note
-            </Link>
             <NotesIndex notes={notes}/>
         </div>
     );

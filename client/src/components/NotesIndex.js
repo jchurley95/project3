@@ -10,7 +10,8 @@ const NotesIndex = (props) => {
             <h1>Notes</h1>
             <ul className="App-Notes-Index">
                 {notes.map((note, i) => {
-                    return <Link to={`/notes/${note._id}`} key={i}><li>{note.title}</li></Link>                })}
+                    return <li><Link to={`/notes/${note._id}`} key={i}>{note.title}</Link></li>                
+                })}
             </ul>
         </div>
     );

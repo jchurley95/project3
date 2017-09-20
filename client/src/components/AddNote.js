@@ -31,7 +31,7 @@ class AddNote extends Component {
                 <div>
                     <form onSubmit={this.props.addNewNote}>
                     <fieldset>
-                        <legend><h1>Submit A New Note</h1></legend>
+                        <legend><h1>Make A Note</h1></legend>
                         <br />
                         <div><input name="Note Title" type="text" placeholder="Note Title" onChange={this._handleNewProductChange}/></div>
                         <br/>

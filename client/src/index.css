@@ -6,6 +6,9 @@ body {
   background-size: stretch;
   background-attachment: fixed;
   background-position: center;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 a {
   /* box-shadow: 0 0 20px 7px black inset; */
@@ -51,10 +54,14 @@ a {
   height: 750px;
 }
 .App-Projects-Bar, .App-Notes-Bar {
+  flex: 0 0 12em;
   margin-top: 10px;
-  width: 25%;
   background-color: rgba(238, 119, 9, 0.4);
   box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.80);  
+  overflow-y: scroll;
+}
+.App-Notes-Bar {
+  order: -1;
 }
 .App-Projects-Bar h1, .App-Notes-Bar h1 {
   border-bottom: 2px solid black;
@@ -65,7 +72,10 @@ a {
 .App-Projects-Bar a, .App-Notes-Bar a {
   color: white;
   border: none;
-  margin: 10px;
+  background-color: rgba(0,0,0,0);
+}
+.App-Projects-Index {
+  background-color: rgba(0,0,0,0);
 }
 
 .App-Routes {
@@ -108,11 +118,15 @@ a {
   margin: 30px;
 }
 
+.HomePage-content {
+  flex: 1;
+}
+
 .HomePageContainer{
   width: 100%;
+  height: 720px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex: 1;
 }
 
 .HomePageContainer p {
@@ -122,12 +136,10 @@ a {
   padding: 10px;
   color: white;
   background-color: rgba(0,0,0,0.5);
+  
 }
 .HomePageContainer a {
-  margin: 10px;
-  padding: 10px;
   color: white;
-  background-color: rgba(0,0,0,0.3);
   height: 30px;
 }
 .HomePageContainer a:hover {
@@ -217,5 +229,8 @@ label {
   .App-Projects-Bar h1, .App-Notes-Bar h1 {
     font-size: 20px;
     text-align: center;
+  }
+  .HomePageContainer{
+    height: 580px;
   }
 }

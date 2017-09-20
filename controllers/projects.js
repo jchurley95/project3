@@ -10,12 +10,31 @@ router.get("/", (req,res) => {
   })
 });
 
-//SHOW PROJECT
+//SHOW Project
 router.get("/:id", (req,res) => {
   Project.findById(req.params.id).then((project) => {
     res.json(project);
   });
 });
+
+//CREATE Project
+router.post("/", (req, res) => {
+  const projectIdToUpdate = req.params.projectId;
+  console.log(projectIdToUpdate);
+  Project.findByIdAndUpdate(projectIdToUpdate)
+    .then(project => {
+      console.log("successfully updated project with " + projectIdToUpdate);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
+
+//UPDATE Project
+router.put("/:id", (req, res) => {
+  
+});
+  
 
 //DELETE Project
 router.delete("/:id/delete", (req, res) => {
