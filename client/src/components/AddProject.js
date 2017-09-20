@@ -16,27 +16,28 @@ class AddProject extends Component {
             pieceLengths: [],
             cutPlan: [],
             totalStockBoardNeededThisProject: 0,
-        }
+        },
+        redirect: false
     }
   }
 
-  _handleNewProjectChange = (event) => {
-      const projectName = event.target.name;
-      const name = event.target.value;
-      const newProject = {...this.state.newProject};
-      newProject[projectName] = name;
-      this.setState({newProject})
-  };
+  _handleNewProjectChange = (e) => {
+    const newState = {...this.state.newProject};
+    newState[e.target.name] = e.target.value;
+    this.setState({
+        newProject: newState
+    });
+  }
   _addNewProjectToProjects = (newProject) => {
-    const projects = {...this.state.projects};
-        console.log('projects is: ', projects);
-    projects.push(newProject);
-        console.log('pushed newProject, now projects is: ', projects);
-    this.setState({projects});
-    axios.post('/api/projects', this.state).then(res => {
-
-    })
-};
+        axios.post('/api/projects', this.state.newProject)
+            .then(res => {
+                console.log('successfully created project');
+                this.setState({redirect: true})
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    };
 
     render() {
         return (
@@ -47,16 +48,16 @@ class AddProject extends Component {
                         <legend><h1>Build A New Project</h1></legend>
                         <br />
                         <div><label>Project Name</label></div>
-                        <div><input name="Project Name" type="text" placeholder="Project Name" onChange={this._handleNewProductChange}/></div>
+                        <div><input name="Project Name" type="text" placeholder="Project Name" value={this.state.newProject.name} onChange={this._handleNewProductChange}/></div>
                         <br/>
                         <div><label>Project Image URL</label></div>
-                        <div><input name="Image URL" type="text" placeholder="Image URL"/></div>
+                        <div><input name="Image URL" type="text" placeholder="Image URL" value={this.state.newProject.imageURL} /></div>
                         <br/>
                         <div><label>Project Description</label></div>
-                        <div><input name="Image URL" type="text" placeholder="Image URL"/></div>
+                        <div><input name="Image URL" type="textarea" placeholder="Description" value={this.state.newProject.description}/></div>
                         <br/>
                         <div><label>Project Piece Lengths List</label></div>
-                        <div><input name="Piece List" type="text" placeholder="Piece Length List" onChange={this._handleNewProductChange}/></div>
+                        <div><input name="Piece List" type="text" placeholder="Piece Length List" value={this.state.newProject.pieceLengths} onChange={this._handleNewProductChange}/></div>
                         <br/>
                         <div><input className="submit" type="submit" value="Create New Product" onSubmit={this._addNewProjectToProjects}/></div>
                     </fieldset>
