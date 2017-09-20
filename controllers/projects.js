@@ -1,7 +1,7 @@
 const express = require('express');
 const Project = require('../models/project');
 const User = require('../models/user');
-const router = express.Router({mergeParams: true});
+const router = express.Router();
 
 //INDEX
 router.get("/", (req,res) => {
@@ -18,23 +18,31 @@ router.get("/:id", (req,res) => {
 });
 
 //Create Project
-router.post("/:id", (req, res) => {
-  console.log(req.body)
-  const newProject = req.body;
-  newProject.save();
+router.post("/", (req, res) => {
+  const project = new Project();
+  project.name = req.body.name
+  project.description = req.body.description
+  project.imageURL = req.body.imageURL
+  project.projectCost = req.body.projectCost
+  project.pieceLengths = req.body.pieceLengths
+  project.cutPlan = req.body.cutPlan
+  project.totalStockBoardNeededThisProject = req.body.totalStockBoardNeededThisProject,
+
+  project.save()
+  .then((project) => {
+    console.log("Success!");
+    res.json(project);
+  })
+  .catch((err) => console.log("Error saving project: " + err))
 });
 
 //UPDATE Project
 router.put("/:id", (req, res) => {
-  const projectIdToUpdate = req.params.projectId;
-  console.log(projectIdToUpdate);
-  Project.findByIdAndUpdate(projectIdToUpdate)
-    .then(project => {
-      console.log("successfully updadted project with " + projectIdToUpdate);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+  const project = req.body;
+  Project.findOneAndUpdate({_id: req.params.id}, project).then((project) => {
+    res.json(project);
+  })
+  .catch(err => console.log(err));
 });
   
 

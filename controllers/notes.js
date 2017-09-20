@@ -1,6 +1,6 @@
 const express = require('express');
 const Note = require('../models/note');
-const router = express.Router({mergeParams: true});
+const router = express.Router();
 
 //INDEX
 router.get("/", (req,res) => {
@@ -18,20 +18,28 @@ router.get("/:id", (req,res) => {
 
 //CREATE Note
 router.post("/", (req, res) => {
-  const noteIdToUpdate = req.params.noteId;
-  console.log(noteIdToUpdate);
-  Note.findByIdAndUpdate(noteIdToUpdate)
-    .then(note => {
-      console.log("successfully updated note with " + noteIdToUpdate);
+  const note = new Note();
+  note.title = req.body.title;
+  note.content = req.body.content;
+  note.imageURL = req.body.imageURL;
+
+  note.save()
+    .then((note) => {
+      console.log("Success!");
+      res.json(note);
     })
-    .catch(err => {
-      console.log(err);
-    })
+    .catch(err => console.log("Error saving note: " + err));
 });
-  
+
 //UPDATE Note
 router.put("/:id", (req, res) => {
-  
+  const note = req.body;
+  Note.findOneAndUpdate({_id: req.params.id}, note).then((note) => {
+    res.json(note);
+  })
+  .catch((err) => {
+    console.log("Error saving project: " + err)
+  })
 });
 
 //DELETE Note

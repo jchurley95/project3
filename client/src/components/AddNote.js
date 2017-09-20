@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {Redirect} from 'react-router-dom'
 
 class AddNote extends Component {
 
@@ -8,49 +9,64 @@ class AddNote extends Component {
     super();
 
     this.state = {
-        newNote: {}
+        newNote: {
+            title: '',
+            content: '',
+            imageURL: ''
+        },
+        redirect: false
     }
   }
 
-  _handleNewNoteChange = (event) => {
-      const noteTitle = event.target.title;
-      const name = event.target.value;
-      const newNote = {...this.state.newNote};
-      newNote[noteTitle] = name;
-      this.setState({newNote})
-  };
-  _addNewNote = (event) => {
-      event.preventDefault();
-      this.props.addNewNoteToNotes(this.state.newNote);
-  };
+    _handleNewNoteChange = (e) => {
+        const newState = {...this.state.newNote};
+        newState[e.target.title] = e.target.value;
+        this.setState({
+            newNote: newState
+        });
+    }
+    _addNewNoteToNotes = (e) => {
+        e.preventDefault();
+        axios.post('/api/notes', this.state.newNote)
+            .then(res => {
+                console.log('successfully created note')
+                // console.log(res.data)
+                this.setState({redirect: true})
+            })
+    };
 
     render() {
         return (
             <div className="New-Container">
-                <br />
-                <div>
-                    <form onSubmit={this.props.addNewNote}>
-                    <fieldset>
-                        <legend><h1>Make A Note</h1></legend>
-                        <br />
-                        <div><input name="Note Title" type="text" placeholder="Note Title" onChange={this._handleNewProductChange}/></div>
-                        <br/>
-                        <div><input className="post-content" name="Post Content" type="text" placeholder="Content" onChange={this._handleNewNoteChange}/></div>
-                        <br/>
-                        <div><input className="submit" type="submit" value="Create New Note" onSubmit={this._addNewNote}/></div>
-                    </fieldset>
+                {this.state.redirect? 
+                    <Redirect to={`/`}/>
+                    :
+                    <form onSubmit={this._addNewNoteToNotes}>
+                            <br />
+                            <div>
+                                <label htmlFor="title">Note title</label>
+                                <br />
+                                <input onChange={this._handleNewNoteChange} title="title" type="text"  value={this.state.newNote.title}/>
+                                </div>
+                            <br/>
+                            <div>
+                                <label htmlFor="imageURL">Note Image URL</label>
+                                <br />
+                                <input onChange={this._handleNewNoteChange} title="imageURL" type="text" value={this.state.newNote.imageURL} />
+                            </div>
+                            <br/>
+                            <div>
+                                <label htmlFor="content">Note content</label>
+                                <br />
+                                <input onChange={this._handleNewNoteChange} title="content" type="textarea" value={this.state.newNote.content}/>
+                            </div>
+                            <br/>
+                            <button>Save Note</button>
+                            {/* <div>
+                                <input className="submit" type="submit" value="Create New Note" onSubmit={this._addNewNoteToNotes}/>
+                            </div> */}
                     </form>
-                </div>
-                <div>
-                    <Link to={`/projects/new`}>
-                        Share A Project
-                    </Link>
-                </div>
-                <div>
-                    <Link to={`/`}>
-                        Go Home
-                    </Link>
-                </div>
+                }
             </div>
         );
 

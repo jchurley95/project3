@@ -22,23 +22,22 @@ class AddProject extends Component {
     }
   }
 
-  _handleNewProjectChange = (e) => {
-    const newState = {...this.state.newProject};
-    newState[e.target.name] = e.target.value;
-    this.setState({
-        newProject: newState
-    });
-  }
-  _addNewProjectToProjects = (e) => {
-    e.preventDefault();
-    axios.post('/api/projects', this.state.newProject)
-        .then(res => {
-            console.log('successfully created project');
-            this.setState({redirect: true})
-        })
-        .catch(err => {
-            console.log(err);
-        })
+    _handleNewProjectChange = (e) => {
+        const newState = {...this.state.newProject};
+        newState[e.target.name] = e.target.value;
+        this.setState({
+            newProject: newState
+        });
+    }
+    _addNewProjectToProjects = (e) => {
+        e.preventDefault();
+        
+        axios.post('/api/projects', this.state.newProject)
+            .then(res => {
+                // console.log(res.data);
+                console.log('successfully created project');
+                this.setState({redirect: true})
+            })
     };
 
     render() {
@@ -73,9 +72,10 @@ class AddProject extends Component {
                                 <input onChange={this._handleNewProjectChange} name="pieceLengths" type="text" value={this.state.newProject.pieceLengths}/>
                             </div>
                             <br/>
-                            <div>
+                            <button>Save Project</button>
+                            {/* <div>
                                 <input className="submit" type="submit" value="Create New Project" onSubmit={this._addNewProjectToProjects}/>
-                            </div>
+                            </div> */}
                     </form>
                 }
             </div>

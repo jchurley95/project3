@@ -7,6 +7,7 @@ mongoose.Promise = global.Promise;
 const noteSchema = new Schema({
     title: String,
     content: String,
+    imageURL: String,
     created_at: Date,
     updated_at: Date
 });
@@ -65,7 +66,5 @@ const Project = mongoose.model('Project', projectSchema);
 const User = mongoose.model('User', userSchema);
 
 module.exports = {
-    Note: Note,
-    Project: Project,
-    User: User
+    Note, Project, User
 };
