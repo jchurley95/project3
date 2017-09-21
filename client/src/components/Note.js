@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom'
 
 class Note extends Component {
     constructor() {
@@ -8,7 +9,8 @@ class Note extends Component {
         this.state = {
             changeTitleActive: false,
             changeContentActive: false,
-            note: {}
+            note: {},
+            redirect: false
         }
     }
 
@@ -33,11 +35,24 @@ class Note extends Component {
         const changeContentActive = !this.state.changeContentActive;
         this.setState({changeContentActive});
     };
+
+    _deleteNote = () => {
+        axios.delete(`/api/notes/${this.props.match.params.noteId}/delete`)
+        .then(res => {
+            console.log("successfully deleted note");
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        
+    }
+
     render() {
         const noteTitle = this.state.note.title;
         const noteContent = this.state.note.content;
         return(
             <div className="NoteContainer">
+                
                 <h2>Note Title: {noteTitle}</h2>
                 <hr />
                 <div>
@@ -85,6 +100,7 @@ class Note extends Component {
                         <button onClick={this._deleteNote}>Delete Note</button>
                     </div>
                 </div>
+                
             </div>
         );
     }

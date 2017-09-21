@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/jchurley95/project3#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.1",
     "concurrently": "^3.5.0",
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
