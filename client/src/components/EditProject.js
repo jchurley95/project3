@@ -9,7 +9,7 @@ class AddProject extends Component {
     super();
 
     this.state = {
-        newProject: {
+        project: {
             name: '',
             description: '',
             imageURL: '',
@@ -22,20 +22,21 @@ class AddProject extends Component {
     }
   }
 
-    _handleNewProjectChange = (e) => {
-        const newState = {...this.state.newProject};
-        newState[e.target.name] = e.target.value;
+    _handleProjectChange = (e) => {
+        const newState = {...this.state.project};
+        newState[e.target.title] = e.target.value;
         this.setState({
-            newProject: newState
+            project: newState
         });
     }
-    _addNewProjectToProjects = (e) => {
+    _updateProject = (e) => {
         e.preventDefault();
-        
-        axios.post('/api/projects', this.state.newProject)
+        const id = this.props.match.params.projectId
+        console.log(id);
+        axios.put(`/api/projects/${id}`, this.state.project)
             .then(res => {
                 // console.log(res.data);
-                console.log('successfully created project');
+                console.log('successfully updated project');
                 this.setState({redirect: true})
             })
     };
@@ -46,36 +47,33 @@ class AddProject extends Component {
                 {this.state.redirect ? 
                     <Redirect to={`/`}/>
                     :
-                    <form onSubmit={this._addNewProjectToProjects}>
+                    <form onSubmit={this._updateProject}>
                             <br />
                             <div>
                                 <label htmlFor="name">Project Name</label>
                                 <br />
-                                <input onChange={this._handleNewProjectChange} name="name" type="text"  value={this.state.newProject.name}/>
+                                <input onChange={this._handleProjectChange} title="name" type="text"  value={this.state.project.name}/>
                                 </div>
                             <br/>
                             <div>
                                 <label htmlFor="imageURL">Project Image URL</label>
                                 <br />
-                                <input onChange={this._handleNewProjectChange} name="imageURL" type="text" value={this.state.newProject.imageURL} />
+                                <input onChange={this._handleProjectChange} title="imageURL" type="text" value={this.state.project.imageURL} />
                             </div>
                             <br/>
                             <div>
                                 <label htmlFor="description">Project Description</label>
                                 <br />
-                                <input onChange={this._handleNewProjectChange} name="description" type="textarea" value={this.state.newProject.description}/>
+                                <input onChange={this._handleProjectChange} title="description" type="textarea" value={this.state.project.description}/>
                             </div>
                             <br/>
                             <div>
                                 <label htmlFor="pieceLengths">Project Piece Lengths List</label>
                                 <br />
-                                <input onChange={this._handleNewProjectChange} name="pieceLengths" type="text" value={this.state.newProject.pieceLengths}/>
+                                <input onChange={this._handleProjectChange} title="pieceLengths" type="text" value={this.state.project.pieceLengths}/>
                             </div>
                             <br/>
-                            <button>Save Project</button>
-                            {/* <div>
-                                <input className="submit" type="submit" value="Create New Project" onSubmit={this._addNewProjectToProjects}/>
-                            </div> */}
+                            <button>Update Project</button>
                     </form>
                 }
             </div>

@@ -17,10 +17,10 @@ class GlobalNav extends Component {
                     <img style={iconStyle} src={HomeIcon} />HOME 
                 </Link>   
                 <h1>Screw Loose Carpentry</h1> 
-                <Link to={`/notes/new`}>
+                <Link to={`/note/new`}>
                     <img style={iconStyle} src={NoteIcon} />NOTE
                 </Link>
-                <Link to={`/projects/new`}>
+                <Link to={`/project/new`}>
                     <img style={iconStyle} src={BuildIcon} />BUILD
                 </Link>
             </div>

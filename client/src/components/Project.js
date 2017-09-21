@@ -34,7 +34,8 @@ class Project extends Component {
                 pieceLengths: [],
                 cutPlan: [],
                 totalStockBoardNeededThisProject: 0
-            }
+            },
+            redirect: false
         }
     }
 
@@ -50,27 +51,12 @@ class Project extends Component {
             this.setState({project});
           })
     }
-    _handleProjectNameChange = (e) => {
-        e.preventDefault();
-        const name = e.target.value;
-            console.log('name is: ', name);
-        this.setState({project: {
-            name: name
-        }});
-    };
-    _handleProjectDescriptionChange = (e) => {
-        e.preventDefault();
-        const description = e.target.value;
-            console.log('description is: ', description);
-            this.setState({project: {
-                description: description
-            }});
-    };   
 
     _deleteProject = () => {
         axios.delete(`/api/projects/${this.props.match.params.projectId}/delete`)
         .then(res => {
             console.log("successfully deleted project");
+            this.setState({redirect: true})
         })
         .catch(err => {
             console.log(err)
@@ -93,16 +79,23 @@ class Project extends Component {
         // pieceLengths = '"'.join(pieceLengths);
         console.log('pieceLengths is: ' + description);
         console.log('This project name is: ' + projectName);
-        
+        const id = this.props.match.params.projectId;
+        console.log(id)
         return(
             <div className="ProjectContainer">
-                <h2>Project Name: {projectName}</h2>
-                <hr />
-                <h3>Description: {description} </h3> 
-                <div>
-                    <Link to='/projects/edit'><button>Edit Project</button></Link>
-                    <button onClick={this._deleteProject}>Delete Project</button>
-                </div>
+                {this.state.redirect ? 
+                    <Redirect to={`/`}/>
+                    :
+                    <div>
+                        <h2>Project Name: {projectName}</h2>
+                        <hr />
+                        <h3>Description: {description} </h3> 
+                        <div>
+                            <Link to={`/projects/${id}/edit`}><button>Edit Project</button></Link>
+                            <button onClick={this._deleteProject}>Delete Project</button>
+                        </div>
+                    </div>
+                }
             </div>
         );
     }

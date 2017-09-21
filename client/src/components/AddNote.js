@@ -46,7 +46,7 @@ class AddNote extends Component {
                             <div>
                                 <label htmlFor="title">Note title</label>
                                 <br />
-                                <input onChange={this._handleNewNoteChange} title="title" type="text"  value={this.state.newNote.title}/>
+                                <input onChange={this._handleNewNoteChange} title="title" type="text"  value={this.state.newNote.title} />
                                 </div>
                             <br/>
                             <div>
@@ -58,13 +58,10 @@ class AddNote extends Component {
                             <div>
                                 <label htmlFor="content">Note content</label>
                                 <br />
-                                <input onChange={this._handleNewNoteChange} title="content" type="textarea" value={this.state.newNote.content}/>
+                                <input onChange={this._handleNewNoteChange} title="content" type="textarea" value={this.state.newNote.content} />
                             </div>
                             <br/>
                             <button>Save Note</button>
-                            {/* <div>
-                                <input className="submit" type="submit" value="Create New Note" onSubmit={this._addNewNoteToNotes}/>
-                            </div> */}
                     </form>
                 }
             </div>

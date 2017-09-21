@@ -9,7 +9,7 @@ class AddNote extends Component {
     super();
 
     this.state = {
-        newNote: {
+        note: {
             title: '',
             content: '',
             imageURL: ''
@@ -18,19 +18,21 @@ class AddNote extends Component {
     }
   }
 
-    _handleNewNoteChange = (e) => {
-        const newState = {...this.state.newNote};
+    _handleNoteChange = (e) => {
+        const newState = {...this.state.note};
         newState[e.target.title] = e.target.value;
         this.setState({
-            newNote: newState
+            note: newState
         });
     }
-    _addNewNoteToNotes = (e) => {
+    _updateNote = (e) => {
         e.preventDefault();
-        axios.post('/api/notes', this.state.newNote)
+        const id = this.props.match.params.noteId
+        console.log(id);
+        axios.put(`/api/notes/${id}`, this.state.note)
             .then(res => {
-                console.log('successfully created note')
-                // console.log(res.data)
+                // console.log(res.data);
+                console.log('successfully updated note');
                 this.setState({redirect: true})
             })
     };
@@ -41,30 +43,27 @@ class AddNote extends Component {
                 {this.state.redirect? 
                     <Redirect to={`/`}/>
                     :
-                    <form onSubmit={this._addNewNoteToNotes}>
+                    <form onSubmit={this._updateNote}>
                             <br />
                             <div>
                                 <label htmlFor="title">Note title</label>
                                 <br />
-                                <input onChange={this._handleNewNoteChange} title="title" type="text"  value={this.state.newNote.title}/>
+                                <input onChange={this._handleNoteChange} title="title" type="text"  value={this.state.note.title} />
                                 </div>
                             <br/>
                             <div>
                                 <label htmlFor="imageURL">Note Image URL</label>
                                 <br />
-                                <input onChange={this._handleNewNoteChange} title="imageURL" type="text" value={this.state.newNote.imageURL} />
+                                <input onChange={this._handleNoteChange} title="imageURL" type="text" value={this.state.note.imageURL} />
                             </div>
                             <br/>
                             <div>
                                 <label htmlFor="content">Note content</label>
                                 <br />
-                                <input onChange={this._handleNewNoteChange} title="content" type="textarea" value={this.state.newNote.content}/>
+                                <input onChange={this._handleNoteChange} title="content" type="textarea" value={this.state.note.content} />
                             </div>
                             <br/>
-                            <button>Save Note</button>
-                            {/* <div>
-                                <input className="submit" type="submit" value="Create New Note" onSubmit={this._addNewNoteToNotes}/>
-                            </div> */}
+                            <button>Update Note</button>
                     </form>
                 }
             </div>
