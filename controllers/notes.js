@@ -27,6 +27,7 @@ router.post("/", (req, res) => {
     .then((note) => {
       console.log("Success!");
       res.json(note);
+      res.redirect('/notes');
     })
     .catch(err => console.log("Error saving note: " + err));
 });
@@ -49,6 +50,7 @@ router.delete("/:id/delete", (req, res) => {
   })
   .then(() => {
     res.send("Successfully Deleted");
+    res.redirect('/');
   })
   .catch(err => console.log('ERROR in controller delete route', err))
 })

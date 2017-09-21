@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import axios from 'axios';
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const projectContainer = styled.div`
     border: 2px solid black;
@@ -25,8 +26,6 @@ class Project extends Component {
         super();
 
         this.state = {
-            changeNameActive: false,
-            changeDescriptionActive: false,
             project: {
                 name: '',
                 description: '',
@@ -51,16 +50,6 @@ class Project extends Component {
             this.setState({project});
           })
     }
-    
-
-    _toggleChangeName = () => {
-        const changeNameActive = !this.state.changeNameActive;
-        this.setState({changeNameActive});
-    };
-    _toggleChangeDescription = () => {
-        const changeDescriptionActive = !this.state.changeDescriptionActive;
-        this.setState({changeDescriptionActive});
-    };
     _handleProjectNameChange = (e) => {
         e.preventDefault();
         const name = e.target.value;
@@ -109,48 +98,9 @@ class Project extends Component {
             <div className="ProjectContainer">
                 <h2>Project Name: {projectName}</h2>
                 <hr />
-                <div>
-                    {
-                        this.state.changeNameActive ? 
-                            <input 
-                                type='text' 
-                                placeholder={this.state.project.name}
-                                onChange={this._handleProjectNameChange}
-                                value={this.state.project.projectName}/>
-                            :
-                            null
-                    }
-                </div>
-                <div>
-                            <div>
-                                <button onClick={this._toggleChangeName}>
-                                    {this.state.changeNameActive
-                                    ? 'Done Editing'
-                                    : 'Edit Project Name'}
-                                </button>
-                            </div>
-                </div>
                 <h3>Description: {description} </h3> 
                 <div>
-                    {
-                        this.state.changeDescriptionActive ? 
-                            <input 
-                                type='textarea' 
-                                placeholder='description'
-                                value={this.state.project.description}
-                                onChange={this._handleProjectDescriptionChange} />
-                            :
-                            null
-                    }
-                </div>
-                <div>
-                    <button onClick={this._toggleChangeDescription}>
-                        {this.state.changeDescriptionActive
-                        ? 'Done Editing'
-                        : 'Edit Description'}
-                    </button> 
-                    <br />
-                    <hr />
+                    <Link to='/projects/edit'><button>Edit Project</button></Link>
                     <button onClick={this._deleteProject}>Delete Project</button>
                 </div>
             </div>

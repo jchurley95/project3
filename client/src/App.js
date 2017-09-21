@@ -10,7 +10,8 @@ import UserProfile from './components/UserProfile';
 import GlobalNav from './components/GlobalNav';
 import NotesIndex from './components/NotesIndex';
 import ProjectsIndex from './components/ProjectsIndex';
-
+import EditProject from './components/EditProject';
+import EditNote from './components/EditNote';
 
 
 class App extends Component {
@@ -31,8 +32,10 @@ class App extends Component {
               <Route exact path="/users/:userId" component={UserProfile}/>
               <Route exact path="/notes/new" component={AddNote} />
               <Route exact path="/notes/:noteId" component={Note}/>
+              <Route exact path="/notes/:noteId/edit" component={EditNote} />
               <Route exact path="/projects/new" component={AddProject} />
               <Route exact path="/projects/:projectId" component={Project}/>
+              <Route exact path="/projects/:projectId/edit" component={EditProject} />
             {/* </div>
 
           </div> */}
