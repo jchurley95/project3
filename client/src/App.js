@@ -41,7 +41,7 @@ class App extends Component {
           </div> */}
 
           <div className="App-Footer"> 
-              Made with &hearts; @ GA
+            <a href="https://www.instagram.com/screwloosecarpentry/">@ScrewLooseCarpentry</a>
           </div>
           
         </div>

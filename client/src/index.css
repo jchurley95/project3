@@ -95,6 +95,11 @@ a {
 .App-Footer {
   border-top: 2px solid black;
   height: 20px;
+  display: flex;
+  justify-content: center;
+}
+.App-Footer a {
+  border: none;
 }
 
 .User-Index-Link a {
