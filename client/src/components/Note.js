@@ -44,16 +44,18 @@ class Note extends Component {
         console.log(id)
         return(
 
-            <div className="NoteContainer">
+            <div>
                 {this.state.redirect ? 
                     <Redirect to={`/`}/>
                     :
-                    <div>
+                    <div className="NoteContainer">
                         <h2>Note Title: {noteTitle}</h2>
                         <hr />
                         <p>{noteContent}</p>
+                        <img className="noteImage" src={this.state.note.imageURL}/>
                         <div>
                             <Link to={`/notes/${id}/edit`}><button>Edit Note</button></Link>
+                            <hr />
                             <button onClick={this._deleteNote}>Delete Note</button>
                         </div>
                     </div>

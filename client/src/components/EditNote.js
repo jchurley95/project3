@@ -39,7 +39,7 @@ class AddNote extends Component {
 
     render() {
         return (
-            <div className="New-Container">
+            <div className="web mobile Edit-Container">
                 {this.state.redirect? 
                     <Redirect to={`/`}/>
                     :

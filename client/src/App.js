@@ -29,7 +29,7 @@ class App extends Component {
 
             <div className="App-Routes"> */}
               <Route exact path="/" component={Home}/>
-              <Route exact path="/users/:userId" component={UserProfile}/>
+              <Route exact path="/user" component={UserProfile}/>
               <Route exact path="/note/new" component={AddNote} />
               <Route exact path="/notes/:noteId" component={Note}/>
               <Route exact path="/notes/:noteId/edit" component={EditNote} />

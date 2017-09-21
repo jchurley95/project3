@@ -82,16 +82,18 @@ class Project extends Component {
         const id = this.props.match.params.projectId;
         console.log(id)
         return(
-            <div className="ProjectContainer">
+            <div>
                 {this.state.redirect ? 
                     <Redirect to={`/`}/>
                     :
-                    <div>
+                    <div className="ProjectContainer">
                         <h2>Project Name: {projectName}</h2>
                         <hr />
                         <h3>Description: {description} </h3> 
+                        <img className="projectImage" src={this.state.project.imageURL}/>
                         <div>
                             <Link to={`/projects/${id}/edit`}><button>Edit Project</button></Link>
+                            <hr />
                             <button onClick={this._deleteProject}>Delete Project</button>
                         </div>
                     </div>

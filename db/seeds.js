@@ -32,16 +32,16 @@ mongoose.Promise = global.Promise;
         const outdoorTableProject = new Project ({
             name: 'Outdoor Table',
             description: "This is a table for the back patio, designed to be a s'mores bar.",
-            imageURL: './images/outdoorTable', // Edit once the real image is in the images file
+            imageURL: 'https://i.pinimg.com/736x/ca/f0/ec/caf0ec6669709c7bec4d1c98256a9a3b--rustic-outdoor-dining-tables-outdoor-tables-and-chairs.jpg', // Edit once the real image is in the images file
             pieceLengths: [12, 12, 36, 36, 24, 24, 36, 36, 38, 38]
         });
     // END JCHurley95 Project 1
     // START JCHurley95 Project 2
         // PROJECT 2 OUTDOOR CHAIR
         const indoorTableProject = new Project ({
-            name: 'Indoor Table',
-            description: 'This is an end table made out of pallet wood, stained with a vinegar and steel wool mixture',
-            imageURL: './images/outdoorTable', // Edit once the real image is in the images file
+            name: 'Red Hot Chili Peppers Poker Table',
+            description: 'Poker table designed after the Red Hot Chili Peppers logo',
+            imageURL: 'http://i19.photobucket.com/albums/b161/homeinone/poker%20tables/cnc-f106-mg.jpg', // Edit once the real image is in the images file
             pieceLengths: [12, 12, 24, 24, 24, 24, 36, 36, 42, 42]
         });
     //END JCHurley95 Project 2
