@@ -1,15 +1,12 @@
-# ScrapSave
+# Screwloose
 
-ScrapSave is a handy tools for smarter builds
+ScrewLooseCarpentry is my freelance carpentry brand
 
-##Goal:
-    - Save money and time with guided build plans
-    - Show off your work
-    - Find inspiration from other users' work
+## About:
+    - My personal think tank for DIY projects and ideas
 
 ## Deployed at: 
-    - Original (this is what I presented https://scrapsave.herokuapp.com/
-    - Smaller scope version (this is what I started the night before) https://scrapsaveapp.herokuapp.com/
+    - https://screwloose.herokuapp.com/
 
 ## Trello:
     - https://trello.com/b/hCmEIU9d/project-3-scrapsave
